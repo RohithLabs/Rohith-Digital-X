@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { AnimatePresence, motion } from "framer-motion"
-import { Menu, X, ArrowUpRight, Phone, Mail, MapPin } from "lucide-react"
+import { Menu, X as CloseIcon, ArrowUpRight, Phone, Mail, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { cn, scrollToSection } from "@/lib/utils"
@@ -19,10 +19,28 @@ const NAV_LINKS = [
   { id: "contact", label: "Contact" },
 ]
 
+const ROTATING_KEYWORDS = [
+  "TECHNOLOGY AGENCY",
+  "BRAND BUILDING",
+  "WEB & MOBILE APPS",
+  "AI AUTOMATION",
+  "CLOUD ARCHITECTURE",
+  "FULL-STACK SYSTEMS",
+]
+
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [keywordIndex, setKeywordIndex] = useState(0)
   const activeSection = useScrollSpy(NAV_LINKS.map((link) => link.id), 120)
+
+  // Rotating keyword animation timer
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setKeywordIndex((prev) => (prev + 1) % ROTATING_KEYWORDS.length)
+    }, 2800)
+    return () => clearInterval(interval)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,9 +61,11 @@ export const Navbar: React.FC = () => {
     scrollToSection(id)
   }
 
+  const currentKeyword = ROTATING_KEYWORDS[keywordIndex]
+
   return (
     <>
-      {/* Rock-solid, stable glassmorphism header (no flickering or blinking) */}
+      {/* Rock-solid, stable glassmorphism header */}
       <header
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
@@ -56,22 +76,49 @@ export const Navbar: React.FC = () => {
       >
         <div className="container max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6">
           
-          {/* Exact Brand Logo matching Photo 3 */}
+          {/* Executive Brand Logo with Thick Italic X & Animated Rotating Subtitle */}
           <button
             onClick={() => handleNavClick("hero")}
-            className="flex flex-col text-left group focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-crimson rounded-lg py-1 px-1.5 transition-transform active:scale-95 cursor-pointer"
+            className="flex flex-col text-left group focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-crimson rounded-lg py-1 px-1 transition-transform active:scale-95 cursor-pointer"
           >
-            <div className="flex items-center text-xl sm:text-2xl font-black tracking-tight text-zinc-950 leading-none">
-              <span>Rohith Digital</span>
-              <span className="text-accent-crimson ml-1.5 font-black">X</span>
+            <div className="flex items-baseline font-syne text-xl sm:text-2xl font-extrabold tracking-tight text-zinc-950 leading-none">
+              <span>Rohith</span>
+              <span className="text-zinc-600 font-normal ml-1">Digital</span>
+              <span className="font-playfair font-black italic text-accent-crimson text-2xl sm:text-3xl ml-1.5 inline-block group-hover:scale-115 group-hover:rotate-6 transition-all duration-300">
+                X
+              </span>
             </div>
-            <div className="text-[9px] sm:text-[10px] uppercase font-extrabold tracking-[0.28em] text-zinc-400 mt-1">
-              TECHNOLOGY AGENCY
+
+            {/* Word-by-Word Animated Keyword Ticker */}
+            <div className="flex items-center gap-1.5 text-[9px] sm:text-[9.5px] uppercase font-mono font-bold tracking-[0.28em] text-zinc-400 mt-1.5 h-4 overflow-hidden">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent-crimson shrink-0 animate-pulse" />
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentKeyword}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="flex items-center gap-1.5 whitespace-nowrap"
+                >
+                  {currentKeyword.split(" ").map((word, wIdx) => (
+                    <motion.span
+                      key={wIdx}
+                      initial={{ opacity: 0, x: -3 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.25, delay: wIdx * 0.08 }}
+                      className="inline-block"
+                    >
+                      {word}
+                    </motion.span>
+                  ))}
+                </motion.div>
+              </AnimatePresence>
             </div>
           </button>
 
-          {/* Desktop Navigation Links with Smooth Touch/Hover Color Shift */}
-          <nav className="hidden xl:flex items-center gap-1 bg-zinc-100/90 p-1.5 rounded-full border border-zinc-200/80 backdrop-blur-md shadow-xs">
+          {/* Desktop Navigation Links with Sliding Spring Indicator */}
+          <nav className="hidden xl:flex items-center gap-1 bg-zinc-100/90 p-1.5 rounded-full border border-zinc-200/80 backdrop-blur-md shadow-xs relative">
             {NAV_LINKS.map((link) => {
               const isActive = activeSection === link.id
               return (
@@ -79,12 +126,19 @@ export const Navbar: React.FC = () => {
                   key={link.id}
                   onClick={() => handleNavClick(link.id)}
                   className={cn(
-                    "relative px-3.5 py-1.5 text-xs font-semibold rounded-full transition-all duration-150 cursor-pointer select-none",
+                    "relative px-3.5 py-1.5 text-xs font-semibold rounded-full transition-colors duration-150 cursor-pointer select-none z-10",
                     isActive
-                      ? "bg-white text-zinc-950 font-extrabold shadow-xs border border-zinc-200/80"
-                      : "text-zinc-600 hover:text-accent-crimson hover:bg-white/60 active:text-accent-crimson"
+                      ? "text-zinc-950 font-extrabold"
+                      : "text-zinc-600 hover:text-zinc-950 hover:bg-white/40"
                   )}
                 >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeNavTab"
+                      className="absolute inset-0 rounded-full bg-white shadow-xs border border-zinc-200/80 -z-10"
+                      transition={{ type: "spring", stiffness: 450, damping: 32 }}
+                    />
+                  )}
                   <span>{link.label}</span>
                 </button>
               )
@@ -97,7 +151,7 @@ export const Navbar: React.FC = () => {
               variant="crimson"
               size="sm"
               onClick={() => handleNavClick("contact")}
-              className="gap-1.5 shadow-crimson-sm hover:shadow-crimson-md text-xs font-bold px-4 py-2"
+              className="gap-1.5 shadow-crimson-sm hover:shadow-crimson-md text-xs font-bold px-4 py-2 hover:scale-105 transition-transform"
             >
               <span>Start a Project</span>
               <ArrowUpRight className="h-3.5 w-3.5" />
@@ -111,7 +165,7 @@ export const Navbar: React.FC = () => {
             aria-label="Toggle navigation menu"
             aria-expanded={isMobileMenuOpen}
           >
-            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {isMobileMenuOpen ? <CloseIcon className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </header>
@@ -139,20 +193,24 @@ export const Navbar: React.FC = () => {
             >
               <div className="flex items-center justify-between pb-4 border-b border-zinc-100">
                 <div className="flex flex-col text-left">
-                  <div className="text-lg font-black tracking-tight text-zinc-950 leading-none">
-                    <span>Rohith Digital</span>
-                    <span className="text-accent-crimson ml-1">X</span>
+                  <div className="flex items-baseline font-syne text-lg font-extrabold tracking-tight text-zinc-950 leading-none">
+                    <span>Rohith</span>
+                    <span className="text-zinc-600 font-normal ml-1">Digital</span>
+                    <span className="font-playfair font-black italic text-accent-crimson text-xl ml-1">
+                      X
+                    </span>
                   </div>
-                  <span className="text-[9px] uppercase font-bold tracking-widest text-zinc-400 mt-1">
-                    TECHNOLOGY AGENCY
-                  </span>
+                  <div className="flex items-center gap-1.5 text-[8.5px] uppercase font-mono font-bold tracking-[0.22em] text-zinc-400 mt-1">
+                    <span className="h-1.5 w-1.5 rounded-full bg-accent-crimson animate-pulse" />
+                    <span>{currentKeyword}</span>
+                  </div>
                 </div>
                 <Badge variant="crimson-subtle" className="text-[10px]">
                   Available for Projects
                 </Badge>
               </div>
 
-              {/* Links with Touch Color Changing Hover Effects */}
+              {/* Links */}
               <div className="grid grid-cols-2 gap-2 py-4">
                 {NAV_LINKS.map((link) => (
                   <button
@@ -177,13 +235,13 @@ export const Navbar: React.FC = () => {
               <div className="mt-2 pt-4 border-t border-zinc-100 space-y-2.5 text-xs text-zinc-600">
                 <div className="flex items-center gap-2">
                   <Phone className="h-3.5 w-3.5 text-accent-crimson" />
-                  <a href="tel:+919655483130" className="hover:text-accent-crimson font-medium transition-colors">
+                  <a href="tel:+919655483130" className="hover:text-accent-crimson font-medium transition-colors font-mono">
                     +91 96554 83130
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="h-3.5 w-3.5 text-accent-crimson" />
-                  <a href="mailto:e.rohit3130@gmail.com" className="hover:text-accent-crimson font-medium transition-colors">
+                  <a href="mailto:e.rohit3130@gmail.com" className="hover:text-accent-crimson font-medium transition-colors font-mono">
                     e.rohit3130@gmail.com
                   </a>
                 </div>

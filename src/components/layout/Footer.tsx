@@ -1,11 +1,30 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
+import { AnimatePresence, motion } from "framer-motion"
 import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react"
 import { LegalModal } from "@/components/modals/LegalModal"
 import { scrollToSection } from "@/lib/utils"
 
+const ROTATING_KEYWORDS = [
+  "TECHNOLOGY AGENCY",
+  "BRAND BUILDING",
+  "WEB & MOBILE APPS",
+  "AI AUTOMATION",
+  "CLOUD ARCHITECTURE",
+  "FULL-STACK SYSTEMS",
+]
+
 export const Footer: React.FC = () => {
   const [legalModalType, setLegalModalType] = useState<"privacy" | "terms" | null>(null)
+  const [keywordIndex, setKeywordIndex] = useState(0)
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setKeywordIndex((prev) => (prev + 1) % ROTATING_KEYWORDS.length)
+    }, 2800)
+    return () => clearInterval(interval)
+  }, [])
+
+  const currentKeyword = ROTATING_KEYWORDS[keywordIndex]
   const currentYear = new Date().getFullYear()
 
   return (
@@ -19,16 +38,43 @@ export const Footer: React.FC = () => {
             {/* Column 1: Agency Brand & Mission */}
             <div className="lg:col-span-5 space-y-4">
               <div className="flex flex-col text-left">
-                <div className="text-2xl font-black tracking-tight text-white leading-none">
-                  <span>Rohith Digital</span>
-                  <span className="text-accent-crimson ml-1.5 font-black">X</span>
+                <div className="flex items-baseline font-syne text-2xl font-extrabold tracking-tight text-white leading-none">
+                  <span>Rohith</span>
+                  <span className="text-zinc-400 font-normal ml-1">Digital</span>
+                  <span className="font-playfair font-black italic text-accent-crimson text-3xl ml-1.5 inline-block">
+                    X
+                  </span>
                 </div>
-                <div className="text-[10px] uppercase font-extrabold tracking-[0.28em] text-zinc-400 mt-1">
-                  TECHNOLOGY AGENCY
+
+                {/* Word-by-Word Animated Keyword Ticker */}
+                <div className="flex items-center gap-1.5 text-[9.5px] uppercase font-mono font-bold tracking-[0.28em] text-zinc-400 mt-2 h-4 overflow-hidden">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent-crimson shrink-0 animate-pulse" />
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={currentKeyword}
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                      className="flex items-center gap-1.5 whitespace-nowrap"
+                    >
+                      {currentKeyword.split(" ").map((word, wIdx) => (
+                        <motion.span
+                          key={wIdx}
+                          initial={{ opacity: 0, x: -3 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.25, delay: wIdx * 0.08 }}
+                          className="inline-block"
+                        >
+                          {word}
+                        </motion.span>
+                      ))}
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
 
-              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-sm">
+              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-sm pt-2">
                 Independent technology and software engineering agency led by Rohith E.
                 Crafting robust websites, mobile apps, scalable backends, and AI automation for ambitious businesses.
               </p>
@@ -59,104 +105,67 @@ export const Footer: React.FC = () => {
                 Navigation
               </h4>
               <ul className="space-y-2 text-xs text-zinc-400">
-                {["hero", "services", "packages", "work", "why-us", "process", "about", "estimator", "faq"].map((id) => (
-                  <li key={id}>
+                {["Services", "Packages", "Work", "Why Us", "Process", "About", "Estimator", "FAQ", "Contact"].map((item) => (
+                  <li key={item}>
                     <button
-                      onClick={() => scrollToSection(id)}
-                      className="hover:text-accent-crimson transition-colors capitalize cursor-pointer"
+                      onClick={() => scrollToSection(item.toLowerCase().replace(" ", "-"))}
+                      className="hover:text-accent-crimson transition-colors cursor-pointer"
                     >
-                      {id.replace("-", " ")}
+                      {item}
                     </button>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Column 3: Services Provided */}
-            <div className="lg:col-span-3 space-y-3">
+            {/* Column 3: Core Services */}
+            <div className="lg:col-span-2 space-y-3">
               <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-300">
-                Packages & Services
+                Capabilities
               </h4>
               <ul className="space-y-2 text-xs text-zinc-400">
-                <li>
-                  <button
-                    onClick={() => scrollToSection("packages")}
-                    className="hover:text-accent-crimson transition-colors text-left cursor-pointer"
-                  >
-                    Starter Landing Page (₹5,000)
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => scrollToSection("packages")}
-                    className="hover:text-accent-crimson transition-colors text-left cursor-pointer font-medium text-white"
-                  >
-                    Professional Business Website (₹15,000)
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => scrollToSection("packages")}
-                    className="hover:text-accent-crimson transition-colors text-left cursor-pointer"
-                  >
-                    Complete E-Commerce (₹50,000)
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => scrollToSection("services")}
-                    className="hover:text-white transition-colors text-left cursor-pointer"
-                  >
-                    Mobile App Development (Android/iOS)
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => scrollToSection("services")}
-                    className="hover:text-white transition-colors text-left cursor-pointer"
-                  >
-                    Backend & AI Automation Agents
-                  </button>
-                </li>
+                {[
+                  "Business Websites",
+                  "Android & iOS Apps",
+                  "Backend APIs & DB",
+                  "AI Agents & Chatbots",
+                  "Cloud Infrastructure",
+                  "Custom Platforms",
+                ].map((service) => (
+                  <li key={service}>
+                    <button
+                      onClick={() => scrollToSection("services")}
+                      className="hover:text-accent-crimson transition-colors cursor-pointer text-left"
+                    >
+                      {service}
+                    </button>
+                  </li>
+                ))}
               </ul>
             </div>
 
-            {/* Column 4: Channels & Status */}
-            <div className="lg:col-span-2 space-y-3">
+            {/* Column 4: Quick Action & Transparency */}
+            <div className="lg:col-span-3 space-y-4">
               <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-300">
-                Connect
+                Direct Kickoff
               </h4>
-              <div className="flex flex-col space-y-2 text-xs text-zinc-400">
-                <a
-                  href="https://wa.me/919655483130"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-emerald-400 flex items-center gap-1.5 transition-colors"
-                >
-                  <span>WhatsApp Direct</span>
-                  <ArrowUpRight className="h-3 w-3" />
-                </a>
-                <a
-                  href="mailto:e.rohit3130@gmail.com"
-                  className="hover:text-white flex items-center gap-1.5 transition-colors"
-                >
-                  <span>Email Consultation</span>
-                  <ArrowUpRight className="h-3 w-3" />
-                </a>
-                <a
-                  href="tel:+919655483130"
-                  className="hover:text-white flex items-center gap-1.5 transition-colors"
-                >
-                  <span>Direct Call</span>
-                  <ArrowUpRight className="h-3 w-3" />
-                </a>
-              </div>
+              <p className="text-xs text-zinc-400 leading-relaxed">
+                Skip the back-and-forth. Chat directly with lead engineer Rohith on WhatsApp.
+              </p>
+              
+              <a
+                href="https://wa.me/919655483130?text=Hello%20Rohith,%20I%20would%20like%20to%20discuss%20a%20new%20project%20with%20Rohith%20Digital%20X."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-all shadow-sm cursor-pointer"
+              >
+                <span>Direct WhatsApp Chat</span>
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </a>
 
-              <div className="pt-3">
-                <div className="p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 text-[11px] text-zinc-400">
-                  <span className="text-emerald-400 font-bold">● Q3 Available</span>
-                  <p className="mt-0.5 text-[10px]">Accepting new website & mobile projects.</p>
-                </div>
+              <div className="p-3 rounded-xl bg-zinc-900/90 border border-zinc-800 text-[11px] text-zinc-400 space-y-1">
+                <span className="font-semibold text-zinc-200 block">Senior Engineering Promise:</span>
+                <p>100% code ownership, strict NDA privacy, and direct founder accountability.</p>
               </div>
             </div>
 
@@ -164,11 +173,14 @@ export const Footer: React.FC = () => {
 
           {/* Bottom Bar: Copyright & Legal */}
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
-            <div className="flex items-center gap-1">
-              <span>© {currentYear} Rohith Digital X. All rights reserved. Founded by Rohith E.</span>
+            <div className="text-center sm:text-left">
+              <p>© {currentYear} Rohith Digital X. All rights reserved.</p>
+              <p className="text-[10px] text-zinc-400 mt-0.5">
+                Engineered with React 19, TypeScript, Tailwind CSS, & Framer Motion.
+              </p>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 text-xs">
               <button
                 onClick={() => setLegalModalType("privacy")}
                 className="hover:text-zinc-300 transition-colors cursor-pointer"
@@ -188,11 +200,11 @@ export const Footer: React.FC = () => {
         </div>
       </footer>
 
-      {/* Legal Dialog */}
+      {/* Legal Policy Modals */}
       <LegalModal
-        type={legalModalType}
         isOpen={legalModalType !== null}
         onClose={() => setLegalModalType(null)}
+        type={legalModalType || "privacy"}
       />
     </>
   )

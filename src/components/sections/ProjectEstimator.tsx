@@ -1,7 +1,10 @@
 import React, { useState, useMemo } from "react"
-import { Calculator, Check, ArrowRight, Clock, Sliders, PackageCheck, MessageCircle } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Calculator, Check, ArrowRight, Clock, Sliders, PackageCheck, MessageCircle, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { TiltCard } from "@/components/ui/tilt-card"
+import { AnimatedNumber } from "@/components/ui/animated-number"
 import { scrollToSection } from "@/lib/utils"
 
 interface ProjectEstimatorProps {
@@ -111,7 +114,7 @@ const FEATURE_ADDONS = [
 ]
 
 export const ProjectEstimator: React.FC<ProjectEstimatorProps> = ({ onApplyEstimate }) => {
-  // Estimator Mode: "packages" (Preset Pack 1, 2, 3) vs "custom" (Modular Builder)
+  // Estimator Mode: "packages" vs "custom"
   const [estimateMode, setEstimateMode] = useState<"packages" | "custom">("packages")
 
   // Preset Selection State
@@ -159,9 +162,7 @@ export const ProjectEstimator: React.FC<ProjectEstimatorProps> = ({ onApplyEstim
 
     return {
       total,
-      priceRange: `₹${total.toLocaleString("en-IN", { maximumFractionDigits: 0 })} – ₹${Math.round(
-        total * 1.25
-      ).toLocaleString("en-IN", { maximumFractionDigits: 0 })}`,
+      highTotal: Math.round(total * 1.25),
       timeline: `${estimatedWeeks} to ${estimatedWeeks + 1} Weeks`,
       budgetBracket,
     }
@@ -189,7 +190,7 @@ export const ProjectEstimator: React.FC<ProjectEstimatorProps> = ({ onApplyEstim
         (fId) => FEATURE_ADDONS.find((f) => f.id === fId)?.label || fId
       )
       
-      const summaryText = `Inquiry for ${currentService.label} with estimated investment of ${customCalculation.priceRange} (${customCalculation.timeline}). Selected add-ons: ${featureLabels.length > 0 ? featureLabels.join(", ") : "Standard baseline"}.`
+      const summaryText = `Inquiry for ${currentService.label} with estimated investment of ₹${customCalculation.total.toLocaleString("en-IN")} – ₹${customCalculation.highTotal.toLocaleString("en-IN")} (${customCalculation.timeline}). Selected add-ons: ${featureLabels.length > 0 ? featureLabels.join(", ") : "Standard baseline"}.`
 
       if (onApplyEstimate) {
         onApplyEstimate({
@@ -227,7 +228,7 @@ Please let me know how we can proceed with kickoff!`
 I built a custom project scope on the Rohith Digital X estimator:
 
 🎯 *Service Offering:* ${currentService.label}
-💰 *Estimated Investment:* ${customCalculation.priceRange}
+💰 *Estimated Investment:* ₹${customCalculation.total.toLocaleString("en-IN")} – ₹${customCalculation.highTotal.toLocaleString("en-IN")}
 ⏱️ *Estimated Delivery:* ${customCalculation.timeline} (${timelineUrgency} pace)
 ⚙️ *Selected Add-ons:* ${featureLabels.length > 0 ? featureLabels.join(", ") : "Standard Baseline"}
 
@@ -238,50 +239,78 @@ Please let me know how we can discuss requirements and schedule a kickoff call!`
   }
 
   return (
-    <section id="estimator" className="py-24 bg-white border-t border-zinc-200/70 relative">
+    <section id="estimator" className="py-24 bg-white border-t border-zinc-200/70 relative overflow-hidden">
       <div className="container max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Header with Clean Typography */}
         <div className="max-w-3xl mb-10 space-y-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-accent-crimson font-mono">
-            Interactive Scope & Investment Estimator
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950 leading-tight">
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-xs font-bold uppercase tracking-widest text-accent-crimson font-mono inline-flex items-center gap-1.5"
+          >
+            <Sparkles className="h-3.5 w-3.5" />
+            <span>Interactive Scope & Investment Estimator</span>
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950 leading-tight"
+          >
             Calculate your scope &{" "}
             <span className="text-accent-crimson font-black">
               estimated investment.
             </span>
-          </h2>
-          <p className="text-base text-zinc-600 leading-relaxed font-normal">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-base text-zinc-600 leading-relaxed font-normal"
+          >
             Choose a standard turnkey package (Pack 1, 2, 3) or build a custom modular scope with your exact feature checklist.
-          </p>
+          </motion.p>
         </div>
 
-        {/* Mode Selector Tabs with Touch Hover Color Shift */}
+        {/* Mode Selector Tabs with Morphing Spring Indicator */}
         <div className="flex mb-8">
-          <div className="inline-flex p-1.5 rounded-2xl bg-zinc-100 border border-zinc-200/80 shadow-xs gap-1.5">
+          <div className="inline-flex p-1.5 rounded-2xl bg-zinc-100 border border-zinc-200/80 shadow-xs gap-1.5 relative">
             <button
               onClick={() => setEstimateMode("packages")}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
-                estimateMode === "packages"
-                  ? "bg-zinc-950 text-white shadow-sm ring-1 ring-zinc-900"
-                  : "text-zinc-600 hover:text-accent-crimson hover:bg-white active:bg-red-50 active:text-accent-crimson"
+              className={`relative flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-colors duration-200 cursor-pointer z-10 ${
+                estimateMode === "packages" ? "text-white" : "text-zinc-600 hover:text-zinc-950"
               }`}
             >
-              <PackageCheck className="h-4 w-4 text-accent-crimson" />
-              <span>Standard Package Selection (Pack 1, 2, 3)</span>
+              {estimateMode === "packages" && (
+                <motion.div
+                  layoutId="activeEstimatorTab"
+                  className="absolute inset-0 rounded-xl bg-zinc-950 shadow-sm ring-1 ring-zinc-900"
+                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                />
+              )}
+              <PackageCheck className={`relative z-10 h-4 w-4 ${estimateMode === "packages" ? "text-accent-crimson" : ""}`} />
+              <span className="relative z-10">Standard Package Selection (Pack 1, 2, 3)</span>
             </button>
 
             <button
               onClick={() => setEstimateMode("custom")}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
-                estimateMode === "custom"
-                  ? "bg-zinc-950 text-white shadow-sm ring-1 ring-zinc-900"
-                  : "text-zinc-600 hover:text-accent-crimson hover:bg-white active:bg-red-50 active:text-accent-crimson"
+              className={`relative flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-colors duration-200 cursor-pointer z-10 ${
+                estimateMode === "custom" ? "text-white" : "text-zinc-600 hover:text-zinc-950"
               }`}
             >
-              <Sliders className="h-4 w-4 text-accent-crimson" />
-              <span>Custom Modular Builder</span>
+              {estimateMode === "custom" && (
+                <motion.div
+                  layoutId="activeEstimatorTab"
+                  className="absolute inset-0 rounded-xl bg-zinc-950 shadow-sm ring-1 ring-zinc-900"
+                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                />
+              )}
+              <Sliders className={`relative z-10 h-4 w-4 ${estimateMode === "custom" ? "text-accent-crimson" : ""}`} />
+              <span className="relative z-10">Custom Modular Builder</span>
             </button>
           </div>
         </div>
@@ -294,7 +323,12 @@ Please let me know how we can discuss requirements and schedule a kickoff call!`
             
             {/* OPTION A: PRESET PACKAGES LIST */}
             {estimateMode === "packages" && (
-              <div className="space-y-3">
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="space-y-3"
+              >
                 <label className="text-xs font-bold uppercase tracking-wider text-zinc-900 flex items-center justify-between">
                   <span>Select a Pre-Configured Package</span>
                   <span className="text-zinc-400 font-mono text-[11px]">Instant Pricing</span>
@@ -304,8 +338,10 @@ Please let me know how we can discuss requirements and schedule a kickoff call!`
                   {PRESET_PACKAGES.map((pkg) => {
                     const isSelected = selectedPresetId === pkg.id
                     return (
-                      <div
+                      <motion.div
                         key={pkg.id}
+                        whileHover={{ scale: 1.01 }}
+                        whileTap={{ scale: 0.99 }}
                         onClick={() => setSelectedPresetId(pkg.id)}
                         className={`group p-4 sm:p-5 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${
                           isSelected
@@ -347,16 +383,21 @@ Please let me know how we can discuss requirements and schedule a kickoff call!`
                             ~{pkg.weeks}
                           </div>
                         </div>
-                      </div>
+                      </motion.div>
                     )
                   })}
                 </div>
-              </div>
+              </motion.div>
             )}
 
             {/* OPTION B: CUSTOM MODULAR BUILDER */}
             {estimateMode === "custom" && (
-              <div className="space-y-6">
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="space-y-6"
+              >
                 {/* Step 1: Select Service Type */}
                 <div className="p-6 rounded-2xl bg-zinc-50 border border-zinc-200 space-y-3">
                   <label className="text-xs font-bold uppercase tracking-wider text-zinc-900 flex items-center justify-between">
@@ -409,7 +450,8 @@ Please let me know how we can discuss requirements and schedule a kickoff call!`
                               : "bg-white/80 border-zinc-200 hover:border-accent-crimson hover:bg-white active:bg-red-50"
                           }`}
                         >
-                          <div
+                          <motion.div
+                            animate={{ scale: isChecked ? 1.1 : 1 }}
                             className={`h-5 w-5 rounded-md flex items-center justify-center border transition-colors ${
                               isChecked
                                 ? "bg-accent-crimson border-accent-crimson text-white"
@@ -417,7 +459,7 @@ Please let me know how we can discuss requirements and schedule a kickoff call!`
                             }`}
                           >
                             <Check className="h-3.5 w-3.5 stroke-[3]" />
-                          </div>
+                          </motion.div>
                           <div className="flex-1">
                             <span className="text-xs font-medium text-zinc-800 leading-snug block">
                               {addon.label}
@@ -447,7 +489,7 @@ Please let me know how we can discuss requirements and schedule a kickoff call!`
                       onClick={() => setTimelineUrgency("standard")}
                       className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
                         timelineUrgency === "standard"
-                          ? "bg-zinc-900 text-white border-zinc-900"
+                          ? "bg-zinc-900 text-white border-zinc-900 shadow-xs"
                           : "bg-white text-zinc-700 border-zinc-300 hover:bg-zinc-50"
                       }`}
                     >
@@ -457,7 +499,7 @@ Please let me know how we can discuss requirements and schedule a kickoff call!`
                       onClick={() => setTimelineUrgency("urgent")}
                       className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
                         timelineUrgency === "urgent"
-                          ? "bg-accent-crimson text-white border-accent-crimson"
+                          ? "bg-accent-crimson text-white border-accent-crimson shadow-xs"
                           : "bg-white text-zinc-700 border-zinc-300 hover:bg-zinc-50"
                       }`}
                     >
@@ -465,108 +507,118 @@ Please let me know how we can discuss requirements and schedule a kickoff call!`
                     </button>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )}
 
           </div>
 
-          {/* Estimate Summary Column */}
+          {/* Estimate Summary Column with 3D TiltCard & Animated Live Rolling Numbers */}
           <div className="lg:col-span-5 sticky top-24">
-            <div className="p-6 sm:p-8 rounded-3xl bg-zinc-950 text-white shadow-2xl space-y-6">
-              
-              <div className="flex items-center justify-between pb-4 border-b border-zinc-800">
-                <div className="flex items-center gap-2">
-                  <Calculator className="h-5 w-5 text-accent-crimson" />
-                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-300">
-                    Estimate Summary
+            <TiltCard tiltMaxAngleX={4} tiltMaxAngleY={4} scale={1.015}>
+              <div className="p-6 sm:p-8 rounded-3xl bg-zinc-950 text-white shadow-2xl space-y-6 border border-zinc-800">
+                
+                <div className="flex items-center justify-between pb-4 border-b border-zinc-800">
+                  <div className="flex items-center gap-2">
+                    <Calculator className="h-5 w-5 text-accent-crimson" />
+                    <span className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-300">
+                      Estimate Summary
+                    </span>
+                  </div>
+                  <Badge variant="dark" className="text-[10px] bg-zinc-800 text-zinc-300 border-zinc-700">
+                    {estimateMode === "packages" ? "Turnkey Package" : "Custom Scope"}
+                  </Badge>
+                </div>
+
+                {/* Service & Addons Selected */}
+                <div className="space-y-3">
+                  {estimateMode === "packages" ? (
+                    <>
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="text-zinc-400">Selected Package:</span>
+                        <span className="font-bold text-white">{activePreset.name}</span>
+                      </div>
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="text-zinc-400">Package Tier:</span>
+                        <span className="font-bold text-accent-crimson">{activePreset.tier}</span>
+                      </div>
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="text-zinc-400">Category:</span>
+                        <span className="font-bold text-white">{activePreset.category}</span>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="text-zinc-400">Selected Offering:</span>
+                        <span className="font-bold text-white">{currentService.label}</span>
+                      </div>
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="text-zinc-400">Add-on Features:</span>
+                        <span className="font-bold text-white">{selectedFeatures.length} selected</span>
+                      </div>
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="text-zinc-400">Timeline Pace:</span>
+                        <span className="font-bold text-white capitalize">{timelineUrgency}</span>
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                {/* Calculated Ballpark Investment with Live Rolling Numbers */}
+                <div className="p-5 rounded-2xl bg-zinc-900/90 border border-zinc-800 space-y-2">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-400">
+                    Estimated Investment
                   </span>
+                  <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                    {estimateMode === "packages" ? (
+                      <AnimatedNumber value={activePreset.price} prefix="₹" />
+                    ) : (
+                      <>
+                        <AnimatedNumber value={customCalculation.total} prefix="₹" />
+                        {" – "}
+                        <AnimatedNumber value={customCalculation.highTotal} prefix="₹" />
+                      </>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-emerald-400 font-medium pt-1">
+                    <Clock className="h-3.5 w-3.5 text-accent-crimson" />
+                    <span>
+                      Estimated Delivery:{" "}
+                      {estimateMode === "packages" ? activePreset.weeks : customCalculation.timeline}
+                    </span>
+                  </div>
                 </div>
-                <Badge variant="dark" className="text-[10px] bg-zinc-800 text-zinc-300 border-zinc-700">
-                  {estimateMode === "packages" ? "Turnkey Package" : "Custom Scope"}
-                </Badge>
-              </div>
 
-              {/* Service & Addons Selected */}
-              <div className="space-y-3">
-                {estimateMode === "packages" ? (
-                  <>
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-zinc-400">Selected Package:</span>
-                      <span className="font-bold text-white">{activePreset.name}</span>
-                    </div>
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-zinc-400">Package Tier:</span>
-                      <span className="font-bold text-accent-crimson">{activePreset.tier}</span>
-                    </div>
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-zinc-400">Category:</span>
-                      <span className="font-bold text-white">{activePreset.category}</span>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-zinc-400">Selected Offering:</span>
-                      <span className="font-bold text-white">{currentService.label}</span>
-                    </div>
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-zinc-400">Add-on Features:</span>
-                      <span className="font-bold text-white">{selectedFeatures.length} selected</span>
-                    </div>
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-zinc-400">Timeline Pace:</span>
-                      <span className="font-bold text-white capitalize">{timelineUrgency}</span>
-                    </div>
-                  </>
-                )}
-              </div>
-
-              {/* Calculated Ballpark Investment */}
-              <div className="p-5 rounded-2xl bg-zinc-900/90 border border-zinc-800 space-y-2">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-400">
-                  Estimated Investment
-                </span>
-                <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-                  {estimateMode === "packages" ? activePreset.priceLabel : customCalculation.priceRange}
+                <div className="text-[11px] text-zinc-400 leading-relaxed space-y-1">
+                  <p>
+                    * Transparent rates for production-grade engineering. Final proposals are finalized with transparent milestone roadmaps.
+                  </p>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-emerald-400 font-medium pt-1">
-                  <Clock className="h-3.5 w-3.5 text-accent-crimson" />
-                  <span>
-                    Estimated Delivery:{" "}
-                    {estimateMode === "packages" ? activePreset.weeks : customCalculation.timeline}
-                  </span>
+
+                {/* Action Buttons: WhatsApp Direct & Online Form */}
+                <div className="space-y-2.5 pt-1">
+                  <a
+                    href={getEstimatorWhatsAppUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white text-xs sm:text-sm font-bold shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    <MessageCircle className="h-4 w-4 shrink-0 fill-current" />
+                    <span>Send Estimate to WhatsApp</span>
+                  </a>
+
+                  <Button
+                    variant="crimson"
+                    size="default"
+                    onClick={handleApply}
+                    className="w-full gap-2 text-xs sm:text-sm font-bold shadow-crimson-md justify-center hover:scale-[1.02] active:scale-[0.98] transition-transform"
+                  >
+                    <span>Apply Estimate to Online Form</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
                 </div>
               </div>
-
-              <div className="text-[11px] text-zinc-400 leading-relaxed space-y-1">
-                <p>
-                  * Transparent rates for production-grade engineering. Final proposals are finalized with transparent milestone roadmaps.
-                </p>
-              </div>
-
-              {/* Action Buttons: WhatsApp Direct & Online Form */}
-              <div className="space-y-2.5 pt-1">
-                <a
-                  href={getEstimatorWhatsAppUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white text-xs sm:text-sm font-bold shadow-sm transition-all duration-200 cursor-pointer"
-                >
-                  <MessageCircle className="h-4 w-4 shrink-0 fill-current" />
-                  <span>Send Estimate to WhatsApp</span>
-                </a>
-
-                <Button
-                  variant="crimson"
-                  size="default"
-                  onClick={handleApply}
-                  className="w-full gap-2 text-xs sm:text-sm font-bold shadow-crimson-md justify-center"
-                >
-                  <span>Apply Estimate to Online Form</span>
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
+            </TiltCard>
           </div>
 
         </div>

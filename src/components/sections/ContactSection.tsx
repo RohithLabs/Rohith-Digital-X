@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { Mail, Phone, MapPin, Send, CheckCircle2, Copy, Check, MessageSquare, ArrowUpRight } from "lucide-react"
+import { Mail, Phone, MapPin, Send, CheckCircle2, Copy, Check, MessageSquare, ArrowUpRight, Sparkles, ShieldCheck } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input, Textarea, Select } from "@/components/ui/input"
+import { TiltCard } from "@/components/ui/tilt-card"
 
 interface ContactSectionProps {
   initialFormData?: {
@@ -80,7 +81,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialFormData 
 
     setStatus("loading")
 
-    // Simulated reliable submission state
     setTimeout(() => {
       setStatus("success")
     }, 1000)
@@ -128,106 +128,131 @@ Project Scope: ${formData.description}`
   }
 
   return (
-    <section id="contact" className="py-24 bg-white border-t border-zinc-200/70 relative">
+    <section id="contact" className="py-24 bg-white border-t border-zinc-200/70 relative overflow-hidden">
       <div className="container max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Header with Editorial Typography */}
         <div className="max-w-3xl mb-16 space-y-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-accent-crimson font-mono">
-            Direct Founder Consultation
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950 editorial-title">
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-xs font-bold uppercase tracking-widest text-accent-crimson font-mono inline-flex items-center gap-1.5"
+          >
+            <Sparkles className="h-3.5 w-3.5" />
+            <span>Direct Founder Consultation</span>
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950 editorial-title"
+          >
             Have an idea? Let’s build it{" "}
             <span className="font-editorial italic font-normal text-accent-crimson">
               properly.
             </span>
-          </h2>
-          <p className="text-base text-zinc-600 leading-relaxed font-normal">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-base text-zinc-600 leading-relaxed font-normal"
+          >
             Tell me what you want to build, and I’ll help you identify the right digital solution.
             I respond personally to every inquiry within 24 hours.
-          </p>
+          </motion.p>
         </div>
 
         {/* Contact Layout Grid: Info on Left, Form on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* Left Column: Direct Contact Details & WhatsApp CTA */}
-          <div className="lg:col-span-5 space-y-6">
-            
-            {/* Contact Channels Card */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-zinc-950 text-white shadow-card space-y-6">
-              <div>
-                <span className="text-[11px] font-mono uppercase tracking-widest text-accent-crimson font-bold">
-                  Direct Communication
-                </span>
-                <h3 className="text-xl font-bold text-white mt-1">
-                  Contact Rohith E Directly
-                </h3>
-                <p className="text-xs text-zinc-400 mt-1">
-                  Founder & Principal Developer at Rohith Digital X
-                </p>
-              </div>
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-5 space-y-6"
+          >
+            {/* Contact Channels Card with 3D Tilt */}
+            <TiltCard tiltMaxAngleX={4} tiltMaxAngleY={4} scale={1.015}>
+              <div className="p-6 sm:p-8 rounded-3xl bg-zinc-950 text-white shadow-card space-y-6 border border-zinc-800">
+                <div>
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-accent-crimson font-bold">
+                    Direct Communication
+                  </span>
+                  <h3 className="text-xl font-bold text-white mt-1">
+                    Contact Rohith E Directly
+                  </h3>
+                  <p className="text-xs text-zinc-400 mt-1">
+                    Founder & Principal Developer at Rohith Digital X
+                  </p>
+                </div>
 
-              <div className="space-y-4 pt-2 text-sm">
-                <div className="flex items-start gap-3.5">
-                  <div className="h-9 w-9 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-accent-crimson shrink-0">
-                    <Mail className="h-4 w-4" />
+                <div className="space-y-4 pt-2 text-sm">
+                  <div className="flex items-start gap-3.5">
+                    <div className="h-10 w-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-accent-crimson shrink-0 shadow-xs">
+                      <Mail className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <span className="text-xs text-zinc-400 block font-mono">Email Address</span>
+                      <a
+                        href="mailto:e.rohit3130@gmail.com"
+                        className="font-medium text-white hover:text-red-300 transition-colors font-mono"
+                      >
+                        e.rohit3130@gmail.com
+                      </a>
+                    </div>
                   </div>
-                  <div>
-                    <span className="text-xs text-zinc-400 block font-mono">Email Address</span>
-                    <a
-                      href="mailto:e.rohit3130@gmail.com"
-                      className="font-medium text-white hover:text-red-300 transition-colors"
-                    >
-                      e.rohit3130@gmail.com
-                    </a>
+
+                  <div className="flex items-start gap-3.5">
+                    <div className="h-10 w-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-accent-crimson shrink-0 shadow-xs">
+                      <Phone className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <span className="text-xs text-zinc-400 block font-mono">Phone / WhatsApp</span>
+                      <a
+                        href="tel:+919655483130"
+                        className="font-medium text-white hover:text-red-300 transition-colors font-mono"
+                      >
+                        +91 96554 83130
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3.5">
+                    <div className="h-10 w-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-accent-crimson shrink-0 shadow-xs">
+                      <MapPin className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <span className="text-xs text-zinc-400 block font-mono">Agency Location</span>
+                      <span className="font-medium text-white">
+                        Namakkal, Tamil Nadu, India
+                      </span>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3.5">
-                  <div className="h-9 w-9 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-accent-crimson shrink-0">
-                    <Phone className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <span className="text-xs text-zinc-400 block font-mono">Phone / WhatsApp</span>
-                    <a
-                      href="tel:+919655483130"
-                      className="font-medium text-white hover:text-red-300 transition-colors"
-                    >
-                      +91 96554 83130
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3.5">
-                  <div className="h-9 w-9 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-accent-crimson shrink-0">
-                    <MapPin className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <span className="text-xs text-zinc-400 block font-mono">Agency Location</span>
-                    <span className="font-medium text-white">
-                      Namakkal, Tamil Nadu, India
-                    </span>
-                  </div>
+                {/* Direct Quick WhatsApp Action */}
+                <div className="pt-4 border-t border-zinc-800 space-y-2">
+                  <a
+                    href={generateWhatsAppUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white text-xs sm:text-sm font-bold transition-all shadow-sm hover:shadow-md cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    <MessageSquare className="h-4 w-4 fill-current" />
+                    <span>Chat on WhatsApp (+91 96554 83130)</span>
+                  </a>
                 </div>
               </div>
-
-              {/* Direct Quick WhatsApp Action */}
-              <div className="pt-4 border-t border-zinc-800 space-y-2">
-                <a
-                  href={generateWhatsAppUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-all shadow-sm cursor-pointer"
-                >
-                  <MessageSquare className="h-4 w-4" />
-                  <span>Chat on WhatsApp (+91 96554 83130)</span>
-                </a>
-              </div>
-            </div>
+            </TiltCard>
 
             {/* Privacy & Response Guarantee */}
-            <div className="p-5 rounded-2xl bg-zinc-50 border border-zinc-200 text-xs text-zinc-600 space-y-2">
+            <div className="p-5 rounded-2xl bg-zinc-50 border border-zinc-200 text-xs text-zinc-600 space-y-2 shadow-xs">
               <div className="flex items-center gap-2 font-bold text-zinc-900">
                 <CheckCircle2 className="h-4 w-4 text-accent-crimson" />
                 <span>Zero Spam & Confidentiality Promise</span>
@@ -237,11 +262,17 @@ Project Scope: ${formData.description}`
               </p>
             </div>
 
-          </div>
+          </motion.div>
 
           {/* Right Column: Project Inquiry Form */}
-          <div className="lg:col-span-7">
-            <div className="p-6 sm:p-8 rounded-3xl bg-zinc-50/70 border border-zinc-200/90 shadow-subtle">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="lg:col-span-7"
+          >
+            <div className="p-6 sm:p-8 rounded-3xl bg-zinc-50/80 border border-zinc-200/90 shadow-card">
               
               {status === "success" ? (
                 <motion.div
@@ -249,9 +280,14 @@ Project Scope: ${formData.description}`
                   animate={{ opacity: 1, scale: 1 }}
                   className="py-10 text-center space-y-6"
                 >
-                  <div className="h-16 w-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="h-16 w-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-sm"
+                  >
                     <CheckCircle2 className="h-8 w-8" />
-                  </div>
+                  </motion.div>
                   
                   <div className="space-y-2 max-w-md mx-auto">
                     <h3 className="text-2xl font-bold text-zinc-900">Inquiry Prepared Successfully!</h3>
@@ -260,21 +296,21 @@ Project Scope: ${formData.description}`
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-white border border-zinc-200 text-left text-xs text-zinc-700 space-y-2 max-w-md mx-auto">
+                  <div className="p-4 rounded-xl bg-white border border-zinc-200 text-left text-xs text-zinc-700 space-y-2 max-w-md mx-auto shadow-xs">
                     <span className="font-bold text-zinc-900 block">Next Instant Steps:</span>
                     <div className="flex flex-col sm:flex-row gap-2 pt-1">
                       <a
                         href={generateWhatsAppUrl()}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs transition-colors"
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all hover:scale-105"
                       >
                         <span>Send via WhatsApp</span>
                         <ArrowUpRight className="h-3.5 w-3.5" />
                       </a>
                       <a
                         href={generateMailtoUrl()}
-                        className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-white font-medium text-xs transition-colors"
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-white font-bold text-xs transition-all hover:scale-105"
                       >
                         <span>Open Mail App</span>
                         <ArrowUpRight className="h-3.5 w-3.5" />
@@ -315,6 +351,7 @@ Project Scope: ${formData.description}`
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         error={errors.name}
+                        className="transition-all focus:border-accent-crimson"
                       />
                     </div>
 
@@ -329,6 +366,7 @@ Project Scope: ${formData.description}`
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         error={errors.email}
+                        className="transition-all focus:border-accent-crimson"
                       />
                     </div>
                   </div>
@@ -344,6 +382,7 @@ Project Scope: ${formData.description}`
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         error={errors.phone}
+                        className="transition-all focus:border-accent-crimson"
                       />
                     </div>
 
@@ -355,6 +394,7 @@ Project Scope: ${formData.description}`
                       <Select
                         value={formData.businessType}
                         onChange={(e) => setFormData({ ...formData, businessType: e.target.value })}
+                        className="transition-all focus:border-accent-crimson"
                       >
                         <option value="Clinic / Hospital / Healthcare">Clinic / Hospital / Healthcare</option>
                         <option value="Retail Shop / Supermarket">Retail Shop / Supermarket</option>
@@ -375,6 +415,7 @@ Project Scope: ${formData.description}`
                       <Select
                         value={formData.service}
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                        className="transition-all focus:border-accent-crimson"
                       >
                         <option value="Business Website Development">Business Website Development</option>
                         <option value="Mobile App Development">Mobile App Development (Android/iOS)</option>
@@ -392,6 +433,7 @@ Project Scope: ${formData.description}`
                       <Select
                         value={formData.budgetRange}
                         onChange={(e) => setFormData({ ...formData, budgetRange: e.target.value })}
+                        className="transition-all focus:border-accent-crimson"
                       >
                         <option value="< ₹25,000">&lt; ₹25,000 (Basic Landing / Bot)</option>
                         <option value="₹25,000 - ₹50,000">₹25,000 - ₹50,000 (Standard Website / Service App)</option>
@@ -413,6 +455,7 @@ Project Scope: ${formData.description}`
                       value={formData.description}
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                       error={errors.description}
+                      className="transition-all focus:border-accent-crimson"
                     />
                   </div>
 
@@ -423,7 +466,7 @@ Project Scope: ${formData.description}`
                       variant="crimson"
                       size="lg"
                       disabled={status === "loading"}
-                      className="w-full sm:w-auto gap-2 text-sm font-bold shadow-crimson-md justify-center px-8"
+                      className="w-full sm:w-auto gap-2 text-sm font-bold shadow-crimson-md justify-center px-8 hover:scale-105 active:scale-95 transition-transform"
                     >
                       {status === "loading" ? (
                         <span>Submitting...</span>
@@ -441,10 +484,14 @@ Project Scope: ${formData.description}`
                       className="inline-flex items-center gap-1.5 text-xs text-zinc-500 hover:text-zinc-900 transition-colors p-2 cursor-pointer"
                     >
                       {copiedSummary ? (
-                        <>
-                          <Check className="h-3.5 w-3.5 text-emerald-600" />
-                          <span className="text-emerald-600 font-medium">Summary Copied!</span>
-                        </>
+                        <motion.div
+                          initial={{ scale: 0.8 }}
+                          animate={{ scale: 1 }}
+                          className="flex items-center gap-1.5 text-emerald-600 font-medium"
+                        >
+                          <Check className="h-3.5 w-3.5" />
+                          <span>Summary Copied!</span>
+                        </motion.div>
                       ) : (
                         <>
                           <Copy className="h-3.5 w-3.5" />
@@ -457,7 +504,7 @@ Project Scope: ${formData.description}`
               )}
 
             </div>
-          </div>
+          </motion.div>
 
         </div>
 
