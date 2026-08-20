@@ -38,10 +38,10 @@ export const Footer: React.FC = () => {
             {/* Column 1: Agency Brand & Mission */}
             <div className="lg:col-span-5 space-y-4">
               <div className="flex flex-col text-left">
-                <div className="flex items-baseline font-syne text-2xl font-extrabold tracking-tight text-white leading-none">
-                  <span>Rohith</span>
-                  <span className="text-zinc-400 font-normal ml-1">Digital</span>
-                  <span className="font-playfair font-black italic text-accent-crimson text-3xl ml-1.5 inline-block">
+                <div className="flex items-baseline font-sans text-2xl font-extrabold tracking-tight text-white leading-none">
+                  <span className="font-black">Rohith</span>
+                  <span className="text-zinc-400 font-medium ml-1.5 tracking-tight">Digital</span>
+                  <span className="font-black text-accent-crimson ml-1.5 inline-block">
                     X
                   </span>
                 </div>

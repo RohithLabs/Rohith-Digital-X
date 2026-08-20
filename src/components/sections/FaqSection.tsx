@@ -21,9 +21,9 @@ export const FaqSection: React.FC = () => {
           <span className="text-xs font-bold uppercase tracking-widest text-accent-crimson font-mono">
             Common Questions & Answers
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950 editorial-title">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950">
             Frequently asked{" "}
-            <span className="font-editorial italic font-normal text-accent-crimson">
+            <span className="text-accent-crimson font-black">
               questions & candid answers.
             </span>
           </h2>

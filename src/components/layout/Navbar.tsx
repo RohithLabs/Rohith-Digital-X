@@ -81,10 +81,10 @@ export const Navbar: React.FC = () => {
             onClick={() => handleNavClick("hero")}
             className="flex flex-col text-left group focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-crimson rounded-lg py-1 px-1 transition-transform active:scale-95 cursor-pointer"
           >
-            <div className="flex items-baseline font-syne text-xl sm:text-2xl font-extrabold tracking-tight text-zinc-950 leading-none">
-              <span>Rohith</span>
-              <span className="text-zinc-600 font-normal ml-1">Digital</span>
-              <span className="font-playfair font-black italic text-accent-crimson text-2xl sm:text-3xl ml-1.5 inline-block group-hover:scale-115 group-hover:rotate-6 transition-all duration-300">
+            <div className="flex items-baseline font-sans text-xl sm:text-2xl font-extrabold tracking-tight text-zinc-950 leading-none">
+              <span className="font-black">Rohith</span>
+              <span className="text-zinc-500 font-medium ml-1.5 tracking-tight">Digital</span>
+              <span className="font-black text-accent-crimson ml-1.5 inline-block group-hover:text-red-700 transition-colors">
                 X
               </span>
             </div>
@@ -193,10 +193,10 @@ export const Navbar: React.FC = () => {
             >
               <div className="flex items-center justify-between pb-4 border-b border-zinc-100">
                 <div className="flex flex-col text-left">
-                  <div className="flex items-baseline font-syne text-lg font-extrabold tracking-tight text-zinc-950 leading-none">
-                    <span>Rohith</span>
-                    <span className="text-zinc-600 font-normal ml-1">Digital</span>
-                    <span className="font-playfair font-black italic text-accent-crimson text-xl ml-1">
+                  <div className="flex items-baseline font-sans text-lg font-extrabold tracking-tight text-zinc-950 leading-none">
+                    <span className="font-black">Rohith</span>
+                    <span className="text-zinc-500 font-medium ml-1.5 tracking-tight">Digital</span>
+                    <span className="font-black text-accent-crimson ml-1.5">
                       X
                     </span>
                   </div>

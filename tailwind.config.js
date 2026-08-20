@@ -75,16 +75,8 @@ export default {
       },
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
-        editorial: ['"Instrument Serif"', 'Georgia', 'serif'],
+        display: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'Menlo', 'monospace'],
-        syne: ['"Syne"', 'sans-serif'],
-        space: ['"Space Grotesk"', 'sans-serif'],
-        outfit: ['"Outfit"', 'sans-serif'],
-        unbounded: ['"Unbounded"', 'sans-serif'],
-        playfair: ['"Playfair Display"', 'Georgia', 'serif'],
-        bodoni: ['"Bodoni Moda"', 'Georgia', 'serif'],
       },
       borderRadius: {
         lg: 'var(--radius)',

@@ -31,10 +31,10 @@ export const AboutSection: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-950 editorial-title mt-2 mb-4"
+                className="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-950 mt-2 mb-4"
               >
                 Led by Rohith E. Built with{" "}
-                <span className="font-editorial italic font-normal text-accent-crimson">
+                <span className="text-accent-crimson font-black">
                   engineering discipline.
                 </span>
               </motion.h2>

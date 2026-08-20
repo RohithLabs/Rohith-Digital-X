@@ -27,10 +27,10 @@ export const ProcessSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950 editorial-title"
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950"
           >
             From initial concept to launch in{" "}
-            <span className="font-editorial italic font-normal text-accent-crimson">
+            <span className="text-accent-crimson font-black">
               4 disciplined phases.
             </span>
           </motion.h2>
