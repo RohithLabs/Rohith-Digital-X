@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react"
 import { motion } from "framer-motion"
-import { Calculator, Check, ArrowRight, Clock, MessageCircle, Sparkles } from "lucide-react"
+import { Calculator, Check, ArrowRight, Clock, MessageCircle, Sparkles, PackageCheck, Sliders } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { TiltCard } from "@/components/ui/tilt-card"
