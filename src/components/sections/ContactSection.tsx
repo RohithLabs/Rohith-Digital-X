@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { Mail, Phone, MapPin, Send, CheckCircle2, Copy, Check, MessageSquare, ArrowUpRight, Sparkles, ShieldCheck } from "lucide-react"
+import { Mail, Phone, MapPin, Send, CheckCircle2, Copy, Check, ArrowUpRight, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input, Textarea, Select } from "@/components/ui/input"
 import { TiltCard } from "@/components/ui/tilt-card"

@@ -1,6 +1,6 @@
 import React from "react"
 import { motion } from "framer-motion"
-import { Globe, Smartphone, Server, Bot, ArrowRight, CheckCircle2, Clock } from "lucide-react"
+import { Globe, Smartphone, Server, Bot, ArrowRight, CheckCircle2 } from "lucide-react"
 import { ServiceItem } from "@/data/services"
 import { Badge } from "@/components/ui/badge"
 import { CardSpotlight } from "@/components/ui/card-spotlight"

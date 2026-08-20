@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 import { techStackData } from "@/data/techStack"
 import { Button } from "@/components/ui/button"
 import { TiltCard } from "@/components/ui/tilt-card"
-import { MapPin, Mail, Phone, CheckCircle, ArrowRight, Sparkles, Terminal } from "lucide-react"
+import { MapPin, Mail, Phone, CheckCircle, ArrowRight, Sparkles } from "lucide-react"
 import { scrollToSection } from "@/lib/utils"
 
 export const AboutSection: React.FC = () => {

@@ -1,6 +1,6 @@
 import React from "react"
 import { motion } from "framer-motion"
-import { ArrowRight, Code, Smartphone, Server, Bot, Sparkles, ShieldCheck, Zap, Layers } from "lucide-react"
+import { ArrowRight, Code, Smartphone, Server, Bot, Sparkles, ShieldCheck, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { HeroCanvas } from "@/components/visual/HeroCanvas"
 import { BorderBeam } from "@/components/ui/border-beam"

@@ -1,7 +1,7 @@
 import React from "react"
 import { motion } from "framer-motion"
 import { processSteps } from "@/data/process"
-import { Search, Compass, Hammer, Rocket, CheckCircle2, Sparkles, ArrowRight } from "lucide-react"
+import { Search, Compass, Hammer, Rocket, CheckCircle2, Sparkles } from "lucide-react"
 import { TiltCard } from "@/components/ui/tilt-card"
 
 const STEP_ICONS = [Search, Compass, Hammer, Rocket]
