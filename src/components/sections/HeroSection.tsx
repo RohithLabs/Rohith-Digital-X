@@ -1,137 +1,116 @@
 import React from "react"
 import { motion } from "framer-motion"
 import { ArrowRight, Code, Smartphone, Server, Bot, Sparkles, ShieldCheck, Zap } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { HeroCanvas } from "@/components/visual/HeroCanvas"
+import { Particles } from "@/components/ui/particles"
 import { BorderBeam } from "@/components/ui/border-beam"
 import { TiltCard } from "@/components/ui/tilt-card"
+import { ShimmerButton } from "@/components/ui/shimmer-button"
+import { FlipWords } from "@/components/ui/flip-words"
+import { SparklesText } from "@/components/ui/sparkles-text"
 import { scrollToSection } from "@/lib/utils"
+
+const KINETIC_PHRASES = [
+  "high-converting websites.",
+  "native mobile apps.",
+  "scalable cloud systems.",
+  "custom AI agents.",
+]
 
 export const HeroSection: React.FC = () => {
   return (
-    <section id="hero" className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 overflow-hidden bg-[#FAFAFA]">
+    <section id="hero" className="relative min-h-[90vh] flex items-center justify-center pt-36 sm:pt-44 pb-16 sm:pb-20 overflow-hidden bg-[#FAFAFA]">
       {/* Background Interactive Nodes Canvas */}
       <HeroCanvas />
 
+      {/* Interactive Particle Atmosphere */}
+      <Particles quantity={35} staticity={40} ease={30} size={0.6} color="#DC2626" />
+
       {/* Subtle background grid pattern */}
-      <div className="absolute inset-0 subtle-grid opacity-60 pointer-events-none z-0" />
+      <div className="absolute inset-0 subtle-grid opacity-50 pointer-events-none z-0" />
       
       {/* Subtle radial lighting */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-red-100/30 rounded-full blur-3xl pointer-events-none z-0 animate-pulse-glow" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[700px] h-[300px] sm:h-[400px] bg-red-100/30 rounded-full blur-3xl pointer-events-none z-0 animate-pulse-glow" />
 
-      <div className="container max-w-6xl mx-auto relative z-10 px-4 sm:px-6">
-        <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
+      <div className="container max-w-5xl mx-auto relative z-10 px-4 sm:px-6">
+        <div className="flex flex-col items-center text-center space-y-6 sm:space-y-7 max-w-4xl mx-auto">
           
-          {/* Eyebrow / Agency Quality Badge with Animated Pulse Glow */}
+          {/* Eyebrow / Agency Quality Badge with Apple Logo */}
           <motion.div
             initial={{ opacity: 0, y: 15, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-zinc-950 text-white shadow-md border border-zinc-800 backdrop-blur-md group hover:border-accent-crimson transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-950 text-white shadow-lg border border-zinc-800 backdrop-blur-xl group hover:border-accent-crimson transition-all relative z-20"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-crimson opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-crimson" />
-            </span>
-            <Sparkles className="h-3.5 w-3.5 text-accent-crimson shrink-0 group-hover:rotate-12 transition-transform" />
-            <span className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-zinc-200 font-mono">
-              Digital Products for Ambitious Businesses
+            {/* Apple Logo SVG */}
+            <svg
+              className="h-3.5 w-3.5 fill-white shrink-0 group-hover:scale-110 transition-transform"
+              viewBox="0 0 170 170"
+            >
+              <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.04-7.58-7.77-11.64-14.19-5.74-8.87-10.22-19.16-13.43-30.86-3.21-11.7-4.82-22.95-4.82-33.74 0-14.28 3.57-26.04 10.7-35.29 7.14-9.25 16.32-13.97 27.53-14.15 4.97 0 10.45 1.25 16.44 3.75 5.99 2.5 9.87 3.8 11.64 3.9 1.54 0 5.67-1.42 12.39-4.26 6.72-2.84 12.28-4.08 16.69-3.73 12.7.99 22.58 5.76 29.64 14.31-11.39 6.89-16.96 16.27-16.71 28.14.25 9.53 3.99 17.51 11.22 23.94 4.5 4.02 9.63 6.94 15.4 8.76-.87 2.61-1.84 5.3-2.91 8.08zM119.22 31.84c0-7.39 2.69-14.33 8.07-20.81 5.38-6.49 12.07-10.48 20.07-11.98.37 1.58.55 3.03.55 4.36 0 7.35-2.82 14.49-8.46 21.42-5.64 6.93-12.44 10.87-20.4 11.83-.06-1.57.17-3.18.17-4.82z" />
+            </svg>
+
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-zinc-200 font-mono">
+              DIGITAL PRODUCTS FOR AMBITIOUS BUSINESSES
             </span>
           </motion.div>
 
-          {/* Main Clean Kinetic Headline with Staggered Word Reveal */}
+          {/* Main Clean Kinetic Headline with Staggered Word Reveal & FlipWords */}
           <motion.h1
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-zinc-950 leading-[1.08] max-w-4xl"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-[-0.04em] text-zinc-950 leading-[1.12] sm:leading-[1.06] max-w-4xl mx-auto text-center font-display"
           >
-            Build a digital presence that{" "}
-            <span className="relative inline-block text-accent-crimson font-black">
-              moves your business
-              <motion.span
-                initial={{ width: 0 }}
-                animate={{ width: "100%" }}
-                transition={{ duration: 0.8, delay: 0.5, ease: "easeInOut" }}
-                className="absolute bottom-1 left-0 h-[3px] bg-accent-crimson/30 rounded-full"
-              />
-            </span>{" "}
-            forward.
+            <span>Build faster. Sell smarter.</span>
+            <div className="flex items-center justify-center flex-wrap gap-x-2.5 mt-1 sm:mt-1.5 mx-auto text-center">
+              <span className="text-zinc-900">Grow with</span>
+              <FlipWords words={KINETIC_PHRASES} duration={3000} className="text-accent-crimson inline-flex justify-center text-center font-black" />
+            </div>
           </motion.h1>
 
-          {/* Supporting Text */}
+          {/* Supporting Text with Fluid Typography */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.25 }}
-            className="text-base sm:text-lg md:text-xl text-zinc-600 max-w-2xl font-normal leading-relaxed"
+            className="text-sm sm:text-base md:text-lg text-zinc-600 max-w-2xl mx-auto text-center font-normal leading-relaxed px-1 sm:px-0 font-sans"
           >
-            <strong className="font-bold text-zinc-950">Rohith Digital X</strong> designs and develops high-performance websites,
-            native mobile applications, scalable backends, and AI automation solutions for modern companies.
+            We design, build, and deploy high-performance web applications, native mobile apps, and autonomous AI agents for ambitious founders and modern companies.
           </motion.p>
 
-          {/* Call to Actions with Interactive Hover Micro-Dynamics */}
+          {/* Call to Actions with ShimmerButton & Interactive Hover Dynamics */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.35 }}
-            className="flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto pt-2"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-3.5 w-full sm:w-auto mx-auto pt-1 sm:pt-2"
           >
-            <Button
-              variant="crimson"
-              size="lg"
+            <ShimmerButton
               onClick={() => scrollToSection("contact")}
-              className="w-full sm:w-auto gap-2 text-base font-bold shadow-crimson-md px-8 py-3.5 hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="w-full sm:w-auto text-xs sm:text-sm py-3 sm:py-3.5 px-7 sm:px-8 font-bold justify-center"
             >
-              <span>Start a Project</span>
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={() => scrollToSection("packages")}
-              className="w-full sm:w-auto gap-2 text-base font-semibold px-7 py-3.5 bg-white/90 backdrop-blur-xs hover:border-zinc-900 hover:scale-[1.02] active:scale-[0.98] transition-transform"
-            >
-              <span>View Packages (From ₹5,000)</span>
-            </Button>
-          </motion.div>
+              <span>Let's connect & build</span>
+              <ArrowRight className="h-4 w-4 shrink-0" />
+            </ShimmerButton>
 
-          {/* Trust Statement */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.45 }}
-            className="pt-3 flex items-center justify-center gap-2 sm:gap-3 flex-wrap text-xs sm:text-sm font-semibold text-zinc-600"
-          >
-            <span className="hover:text-accent-crimson transition-colors cursor-default">Websites</span>
-            <span className="text-accent-crimson font-bold">•</span>
-            <span className="hover:text-accent-crimson transition-colors cursor-default">Mobile Apps</span>
-            <span className="text-accent-crimson font-bold">•</span>
-            <span className="hover:text-accent-crimson transition-colors cursor-default">Backend Systems</span>
-            <span className="text-accent-crimson font-bold">•</span>
-            <span className="hover:text-accent-crimson transition-colors cursor-default">AI Automation</span>
+            <button
+              onClick={() => scrollToSection("work")}
+              className="w-full sm:w-auto text-xs sm:text-sm py-3 sm:py-3.5 px-6 rounded-full border border-zinc-300 bg-white hover:border-zinc-900 text-zinc-900 font-semibold transition-all shadow-xs cursor-pointer active:scale-95"
+            >
+              Explore Selected Work ↗
+            </button>
           </motion.div>
 
           {/* Interactive Hero Architecture Visual Card with Floating Stat Chips & 3D Tilt */}
-          <div className="relative w-full max-w-3xl mt-6">
+          <div className="relative w-full max-w-3xl mt-4 sm:mt-6">
             
-            {/* Floating Live Badge Left (Hidden on very small screens, responsive on sm+) */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="hidden sm:flex absolute -left-6 -top-5 z-20 items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-zinc-200/90 shadow-card text-xs font-semibold text-zinc-900 animate-float-slow backdrop-blur-md"
-            >
-              <Zap className="h-3.5 w-3.5 text-accent-crimson fill-accent-crimson/20" />
-              <span>&lt; 800ms Fast Load Time</span>
-            </motion.div>
-
             {/* Floating Live Badge Right */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
+              initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="hidden sm:flex absolute -right-6 -bottom-4 z-20 items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-950 border border-zinc-800 shadow-card text-xs font-semibold text-white animate-float-medium backdrop-blur-md"
+              className="hidden md:flex absolute -right-5 -bottom-3 z-20 items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-950 border border-zinc-800 shadow-card text-xs font-semibold text-white backdrop-blur-md"
             >
               <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
               <span>100% Code Ownership</span>
@@ -142,68 +121,65 @@ export const HeroSection: React.FC = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.5 }}
-                className="relative w-full rounded-2xl border border-zinc-200/90 bg-white/95 backdrop-blur-md shadow-card p-4 sm:p-6 text-left overflow-hidden group"
+                className="relative w-full rounded-2xl border border-zinc-200/90 bg-white/95 backdrop-blur-md shadow-card p-3.5 sm:p-6 text-left overflow-hidden group"
               >
-                {/* Animated Travelling Laser Border Beam */}
-                <BorderBeam size={180} duration={7} colorFrom="#DC2626" colorTo="#EF4444" borderWidth={2} />
+                {/* Border Beam */}
+                <BorderBeam size={180} duration={7} colorFrom="#DC2626" colorTo="#EF4444" borderWidth={1.5} />
 
                 {/* Window Topbar */}
-                <div className="flex items-center justify-between pb-4 border-b border-zinc-100">
-                  <div className="flex items-center gap-2">
-                    <span className="h-3 w-3 rounded-full bg-red-400" />
-                    <span className="h-3 w-3 rounded-full bg-amber-400" />
-                    <span className="h-3 w-3 rounded-full bg-emerald-400" />
-                    <span className="ml-2 text-xs font-mono font-medium text-zinc-500">
+                <div className="flex items-center justify-between pb-3 sm:pb-4 border-b border-zinc-100">
+                  <div className="flex items-center gap-1.5 sm:gap-2">
+                    <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-red-400" />
+                    <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-amber-400" />
+                    <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-emerald-400" />
+                    <span className="ml-1 sm:ml-2 text-[10px] sm:text-xs font-mono font-medium text-zinc-500 truncate max-w-[170px] sm:max-w-none">
                       rohith-digital-x / engineering-suite
                     </span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-                    </span>
-                    <span className="text-[11px] font-mono font-semibold text-emerald-600">
-                      Operational
+                  <div className="flex items-center gap-1.5">
+                    <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                    <span className="text-[10px] sm:text-[11px] font-mono font-semibold text-emerald-700">
+                      Available for Projects
                     </span>
                   </div>
                 </div>
 
                 {/* Micro Pillars Grid with Micro Hover Reaction */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4">
-                  <div className="p-3 rounded-xl bg-zinc-50 border border-zinc-100 hover:border-accent-crimson hover:bg-red-50/40 hover:shadow-xs transition-all duration-200 group/pillar">
-                    <div className="flex items-center gap-2 text-xs font-bold text-zinc-900 group-hover/pillar:text-accent-crimson transition-colors mb-1">
-                      <Code className="h-3.5 w-3.5 text-accent-crimson" />
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 pt-3 sm:pt-4">
+                  <div className="p-2.5 sm:p-3 rounded-xl bg-zinc-50 border border-zinc-100 hover:border-accent-crimson hover:bg-red-50/40 hover:shadow-xs transition-all duration-200 group/pillar">
+                    <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-bold text-zinc-900 group-hover/pillar:text-accent-crimson transition-colors mb-0.5 sm:mb-1">
+                      <Code className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-accent-crimson shrink-0" />
                       <span>Websites</span>
                     </div>
-                    <p className="text-[11px] text-zinc-500">Fast React / SEO</p>
-                    <div className="mt-2 text-[10px] font-mono text-zinc-700 font-bold">From ₹5,000</div>
+                    <p className="text-[10px] sm:text-[11px] text-zinc-500">Fast React / SEO</p>
+                    <div className="mt-1.5 sm:mt-2 text-[9px] sm:text-[10px] font-mono text-zinc-700 font-bold">From ₹5,000</div>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-zinc-50 border border-zinc-100 hover:border-accent-crimson hover:bg-red-50/40 hover:shadow-xs transition-all duration-200 group/pillar">
-                    <div className="flex items-center gap-2 text-xs font-bold text-zinc-900 group-hover/pillar:text-accent-crimson transition-colors mb-1">
-                      <Smartphone className="h-3.5 w-3.5 text-accent-crimson" />
+                  <div className="p-2.5 sm:p-3 rounded-xl bg-zinc-50 border border-zinc-100 hover:border-accent-crimson hover:bg-red-50/40 hover:shadow-xs transition-all duration-200 group/pillar">
+                    <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-bold text-zinc-900 group-hover/pillar:text-accent-crimson transition-colors mb-0.5 sm:mb-1">
+                      <Smartphone className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-accent-crimson shrink-0" />
                       <span>Mobile Apps</span>
                     </div>
-                    <p className="text-[11px] text-zinc-500">Android & iOS</p>
-                    <div className="mt-2 text-[10px] font-mono text-zinc-700 font-bold">From ₹30,000</div>
+                    <p className="text-[10px] sm:text-[11px] text-zinc-500">Android & iOS</p>
+                    <div className="mt-1.5 sm:mt-2 text-[9px] sm:text-[10px] font-mono text-zinc-700 font-bold">From ₹30,000</div>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-zinc-50 border border-zinc-100 hover:border-accent-crimson hover:bg-red-50/40 hover:shadow-xs transition-all duration-200 group/pillar">
-                    <div className="flex items-center gap-2 text-xs font-bold text-zinc-900 group-hover/pillar:text-accent-crimson transition-colors mb-1">
-                      <Server className="h-3.5 w-3.5 text-accent-crimson" />
+                  <div className="p-2.5 sm:p-3 rounded-xl bg-zinc-50 border border-zinc-100 hover:border-accent-crimson hover:bg-red-50/40 hover:shadow-xs transition-all duration-200 group/pillar">
+                    <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-bold text-zinc-900 group-hover/pillar:text-accent-crimson transition-colors mb-0.5 sm:mb-1">
+                      <Server className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-accent-crimson shrink-0" />
                       <span>Backends</span>
                     </div>
-                    <p className="text-[11px] text-zinc-500">Spring Boot / SQL</p>
-                    <div className="mt-2 text-[10px] font-mono text-zinc-700 font-bold">Secure REST API</div>
+                    <p className="text-[10px] sm:text-[11px] text-zinc-500">Spring Boot / SQL</p>
+                    <div className="mt-1.5 sm:mt-2 text-[9px] sm:text-[10px] font-mono text-zinc-700 font-bold">Secure REST API</div>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-zinc-50 border border-zinc-100 hover:border-accent-crimson hover:bg-red-50/40 hover:shadow-xs transition-all duration-200 group/pillar">
-                    <div className="flex items-center gap-2 text-xs font-bold text-zinc-900 group-hover/pillar:text-accent-crimson transition-colors mb-1">
-                      <Bot className="h-3.5 w-3.5 text-accent-crimson" />
+                  <div className="p-2.5 sm:p-3 rounded-xl bg-zinc-50 border border-zinc-100 hover:border-accent-crimson hover:bg-red-50/40 hover:shadow-xs transition-all duration-200 group/pillar">
+                    <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-bold text-zinc-900 group-hover/pillar:text-accent-crimson transition-colors mb-0.5 sm:mb-1">
+                      <Bot className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-accent-crimson shrink-0" />
                       <span>AI Agents</span>
                     </div>
-                    <p className="text-[11px] text-zinc-500">Workflows & Bots</p>
-                    <div className="mt-2 text-[10px] font-mono text-zinc-700 font-bold">From ₹20,000</div>
+                    <p className="text-[10px] sm:text-[11px] text-zinc-500">Workflows & Bots</p>
+                    <div className="mt-1.5 sm:mt-2 text-[9px] sm:text-[10px] font-mono text-zinc-700 font-bold">From ₹20,000</div>
                   </div>
                 </div>
               </motion.div>

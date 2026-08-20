@@ -1,0 +1,6 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Canonical Sitemap
+Sitemap: https://rohithdigitalx.com/sitemap.xml

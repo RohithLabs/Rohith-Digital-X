@@ -13,21 +13,21 @@ export const FaqSection: React.FC = () => {
   }
 
   return (
-    <section id="faq" className="py-24 bg-[#FAFAFA] border-t border-zinc-200/70 relative">
+    <section id="faq" className="py-16 sm:py-24 bg-[#FAFAFA] border-t border-zinc-200/70 relative">
       <div className="container max-w-4xl mx-auto px-4 sm:px-6">
         
         {/* Section Header with Editorial Typography */}
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-accent-crimson font-mono">
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-3">
+          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-accent-crimson font-mono">
             Common Questions & Answers
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950 leading-tight">
             Frequently asked{" "}
             <span className="text-accent-crimson font-black">
               questions & candid answers.
             </span>
           </h2>
-          <p className="text-base text-zinc-600 leading-relaxed font-normal">
+          <p className="text-xs sm:text-sm md:text-base text-zinc-600 leading-relaxed font-normal">
             Direct, candid answers about how we build, communicate, and deliver digital systems for clients.
           </p>
         </div>

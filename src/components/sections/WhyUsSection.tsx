@@ -16,16 +16,16 @@ const ICON_MAP = {
 
 export const WhyUsSection: React.FC = () => {
   return (
-    <section id="why-us" className="py-24 bg-[#FAFAFA] relative overflow-hidden">
+    <section id="why-us" className="py-16 sm:py-24 bg-[#FAFAFA] relative overflow-hidden">
       <div className="container max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Header with Editorial Typography */}
-        <div className="max-w-3xl mb-16 space-y-3">
+        <div className="max-w-3xl mb-12 sm:mb-16 space-y-3">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-xs font-bold uppercase tracking-widest text-accent-crimson font-mono inline-block"
+            className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-accent-crimson font-mono inline-block"
           >
             Senior Engineering Partnership
           </motion.span>
@@ -34,7 +34,7 @@ export const WhyUsSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950"
+            className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950 leading-tight"
           >
             The advantages of a dedicated,{" "}
             <span className="text-accent-crimson font-black">
@@ -46,7 +46,7 @@ export const WhyUsSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base text-zinc-600 leading-relaxed font-normal"
+            className="text-xs sm:text-sm md:text-base text-zinc-600 leading-relaxed font-normal"
           >
             Unlike oversized agencies with layer upon layer of non-technical account managers, 
             Rohith Digital X delivers direct founder accountability, clean code, and solutions built for your real business needs.
@@ -96,11 +96,8 @@ export const WhyUsSection: React.FC = () => {
                         <div className="flex items-center gap-2">
                           {isFeatured && (
                             <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-emerald-400 text-[11px] font-mono font-semibold">
-                              <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-                              </span>
-                              <span>&lt; 24h Founder SLA</span>
+                              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                              <span>24h Founder SLA</span>
                             </span>
                           )}
                           <span

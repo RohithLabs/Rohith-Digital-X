@@ -69,16 +69,16 @@ Please let me know the kickoff process and timeline to get started!`
   }
 
   return (
-    <section id="packages" className="py-24 bg-white border-t border-zinc-200/70 relative overflow-hidden">
+    <section id="packages" className="py-16 sm:py-24 bg-white border-t border-zinc-200/70 relative overflow-hidden">
       <div className="container max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Section Header with Clean Typography */}
-        <div className="max-w-3xl mx-auto text-center mb-12 space-y-3">
+        <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-12 space-y-3">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-xs font-bold uppercase tracking-widest text-accent-crimson font-mono inline-block"
+            className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-accent-crimson font-mono inline-block"
           >
             Transparent Pricing & Production Packages
           </motion.span>
@@ -87,7 +87,7 @@ Please let me know the kickoff process and timeline to get started!`
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950 leading-tight"
+            className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950 leading-tight"
           >
             Tailored digital{" "}
             <span className="text-accent-crimson font-black">
@@ -99,7 +99,7 @@ Please let me know the kickoff process and timeline to get started!`
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base text-zinc-600 leading-relaxed font-normal"
+            className="text-xs sm:text-sm md:text-base text-zinc-600 leading-relaxed font-normal"
           >
             Clear, transparent scope and pricing designed for businesses, clinics, retail shops, startups, and institutions.
             Tap any package to inquire instantly on WhatsApp or book online.

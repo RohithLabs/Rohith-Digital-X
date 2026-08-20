@@ -8,18 +8,18 @@ const STEP_ICONS = [Search, Compass, Hammer, Rocket]
 
 export const ProcessSection: React.FC = () => {
   return (
-    <section id="process" className="py-24 bg-white border-t border-zinc-200/70 relative overflow-hidden">
+    <section id="process" className="py-16 sm:py-24 bg-white border-t border-zinc-200/70 relative overflow-hidden">
       <div className="container max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Header with Editorial Typography */}
-        <div className="max-w-3xl mb-16 space-y-3">
+        <div className="max-w-3xl mb-12 sm:mb-16 space-y-3">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-xs font-bold uppercase tracking-widest text-accent-crimson font-mono inline-flex items-center gap-1.5"
+            className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-accent-crimson font-mono inline-flex items-center gap-1.5"
           >
-            <Sparkles className="h-3.5 w-3.5" />
+            <Sparkles className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
             <span>Disciplined Delivery Workflow</span>
           </motion.span>
           <motion.h2
@@ -27,7 +27,7 @@ export const ProcessSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950"
+            className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950 leading-tight"
           >
             From initial concept to launch in{" "}
             <span className="text-accent-crimson font-black">
@@ -39,7 +39,7 @@ export const ProcessSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base text-zinc-600 leading-relaxed font-normal"
+            className="text-xs sm:text-sm md:text-base text-zinc-600 leading-relaxed font-normal"
           >
             A predictable, milestone-driven roadmap ensures zero surprises, honest timelines, and seamless execution.
           </motion.p>

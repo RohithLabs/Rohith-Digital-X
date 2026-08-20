@@ -1,8 +1,9 @@
 import React from "react"
 import { motion } from "framer-motion"
-import { MessageSquareCode, Cpu, Smartphone, Layers, CheckCircle2, ShieldCheck, Zap, Lock, Code2 } from "lucide-react"
+import { MessageSquareCode, Cpu, Smartphone, Layers, CheckCircle2, ShieldCheck, Zap, Lock, Code2, Sparkles } from "lucide-react"
 import { Marquee } from "@/components/ui/marquee"
 import { TiltCard } from "@/components/ui/tilt-card"
+import { ArchitectureOrbit } from "@/components/visual/ArchitectureOrbit"
 
 const TRUST_PILLARS = [
   {
@@ -40,7 +41,7 @@ const TECH_ITEMS_ROW_1 = [
 
 const TECH_ITEMS_ROW_2 = [
   { name: "99.9% Uptime Architecture", icon: ShieldCheck },
-  { name: "< 800ms Time-to-Interactive", icon: Zap },
+  { name: "High-Performance Speed", icon: Zap },
   { name: "Strict SQL & JWT Security", icon: Lock },
   { name: "Clean Modular Source Code", icon: Code2 },
   { name: "100% Client Code Ownership", icon: CheckCircle2 },
@@ -49,25 +50,26 @@ const TECH_ITEMS_ROW_2 = [
 
 export const TrustSection: React.FC = () => {
   return (
-    <section className="py-24 bg-white border-y border-zinc-200/70 relative overflow-hidden">
-      <div className="container max-w-6xl mx-auto px-4 sm:px-6">
+    <section className="py-16 sm:py-24 bg-white border-y border-zinc-200/70 relative overflow-hidden">
+      <div className="container max-w-6xl mx-auto px-4 sm:px-6 space-y-12">
         
-        {/* Editorial Introduction Statement */}
-        <div className="max-w-3xl mx-auto text-center space-y-4">
+        {/* Clean Centered Header */}
+        <div className="max-w-3xl mx-auto text-center space-y-3">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-xs font-bold uppercase tracking-widest text-accent-crimson font-mono inline-block"
+            className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-accent-crimson font-mono inline-flex items-center gap-1.5"
           >
-            Foundational Engineering Principles
+            <Sparkles className="h-3 w-3" />
+            <span>FOUNDATIONAL ENGINEERING PRINCIPLES</span>
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-zinc-950"
+            className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-zinc-950 leading-tight font-display"
           >
             Turning ambitious ideas into{" "}
             <span className="text-accent-crimson font-black">reliable digital products.</span>
@@ -77,16 +79,14 @@ export const TrustSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base sm:text-lg text-zinc-600 leading-relaxed font-normal"
+            className="text-sm sm:text-base text-zinc-600 leading-relaxed font-normal max-w-2xl mx-auto"
           >
-            <strong>Rohith Digital X</strong> helps businesses turn ideas into durable digital products.
-            From a high-converting business website to a mobile app or AI automated workflow,
-            every solution is built with speed, scalability, and long-term maintainability.
+            We build with speed, scalability, and clean modular code for founders and growing businesses.
           </motion.p>
         </div>
 
         {/* 4 Core Value Statements Grid with 3D TiltCards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-14 sm:mt-16">
           {TRUST_PILLARS.map((pillar, index) => {
             const Icon = pillar.icon
             return (
@@ -99,17 +99,17 @@ export const TrustSection: React.FC = () => {
                 className="h-full"
               >
                 <TiltCard tiltMaxAngleX={6} tiltMaxAngleY={6} scale={1.02} className="h-full">
-                  <div className="group relative p-6 rounded-2xl bg-zinc-50/90 border border-zinc-200/90 hover:border-accent-crimson hover:bg-white hover:shadow-card transition-all duration-300 flex flex-col justify-between h-full cursor-default">
+                  <div className="group relative p-5 sm:p-6 rounded-2xl bg-zinc-50/90 border border-zinc-200/90 hover:border-accent-crimson hover:bg-white hover:shadow-card transition-all duration-300 flex flex-col justify-between h-full cursor-default">
                     <div>
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white border border-zinc-200 text-zinc-900 group-hover:text-accent-crimson group-hover:border-red-200 group-hover:bg-red-50/60 group-hover:scale-110 transition-all duration-300 shadow-xs">
-                          <Icon className="h-5 w-5" />
+                      <div className="flex items-center justify-between mb-3.5">
+                        <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-white border border-zinc-200 text-zinc-900 group-hover:text-accent-crimson group-hover:border-red-200 group-hover:bg-red-50/60 group-hover:scale-110 transition-all duration-300 shadow-xs">
+                          <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                         </div>
                         <span className="text-xs font-mono font-extrabold text-zinc-400 group-hover:text-accent-crimson transition-colors">
                           0{index + 1}
                         </span>
                       </div>
-                      <h3 className="text-base font-bold text-zinc-900 group-hover:text-accent-crimson transition-colors mb-2">
+                      <h3 className="text-sm sm:text-base font-bold text-zinc-900 group-hover:text-accent-crimson transition-colors mb-1.5">
                         {pillar.title}
                       </h3>
                       <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed font-normal">
@@ -117,8 +117,8 @@ export const TrustSection: React.FC = () => {
                       </p>
                     </div>
 
-                    <div className="mt-5 pt-3 border-t border-zinc-200/60 flex items-center gap-1.5 text-[11px] font-semibold text-zinc-500">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-accent-crimson shrink-0" />
+                    <div className="mt-4 pt-3 border-t border-zinc-200/60 flex items-center gap-1.5 text-[10px] sm:text-[11px] font-semibold text-zinc-500">
+                      <CheckCircle2 className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-accent-crimson shrink-0" />
                       <span>Standard Quality SLA</span>
                     </div>
                   </div>
@@ -129,9 +129,9 @@ export const TrustSection: React.FC = () => {
         </div>
 
         {/* Dual Opposing Direction Marquees */}
-        <div className="mt-16 pt-10 border-t border-zinc-100 space-y-4">
-          <div className="text-center mb-4">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-zinc-400">
+        <div className="mt-14 sm:mt-16 pt-8 sm:pt-10 border-t border-zinc-100 space-y-3.5">
+          <div className="text-center mb-2">
+            <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-widest text-zinc-400">
               Modern Enterprise Tech Stack & Production SLAs
             </span>
           </div>
@@ -142,7 +142,7 @@ export const TrustSection: React.FC = () => {
               {TECH_ITEMS_ROW_1.map((tech, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-50 border border-zinc-200/80 text-xs font-mono font-semibold text-zinc-800 hover:border-accent-crimson hover:bg-white hover:text-accent-crimson transition-all shadow-xs cursor-default hover:scale-105"
+                  className="flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-zinc-50 border border-zinc-200/80 text-[11px] sm:text-xs font-mono font-semibold text-zinc-800 hover:border-accent-crimson hover:bg-white hover:text-accent-crimson transition-all shadow-xs cursor-default hover:scale-105"
                 >
                   <span className="h-1.5 w-1.5 rounded-full bg-accent-crimson" />
                   <span>{tech.name}</span>
@@ -160,7 +160,7 @@ export const TrustSection: React.FC = () => {
                 return (
                   <div
                     key={i}
-                    className="flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-950 border border-zinc-800 text-xs font-mono font-semibold text-zinc-200 hover:border-accent-crimson hover:bg-zinc-900 transition-all shadow-xs cursor-default hover:scale-105"
+                    className="flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-zinc-950 border border-zinc-800 text-[11px] sm:text-xs font-mono font-semibold text-zinc-200 hover:border-accent-crimson hover:bg-zinc-900 transition-all shadow-xs cursor-default hover:scale-105"
                   >
                     <IconComponent className="h-3.5 w-3.5 text-accent-crimson" />
                     <span>{item.name}</span>

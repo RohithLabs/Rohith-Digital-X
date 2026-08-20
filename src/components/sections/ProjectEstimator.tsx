@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { TiltCard } from "@/components/ui/tilt-card"
 import { AnimatedNumber } from "@/components/ui/animated-number"
+import { Confetti } from "@/components/ui/confetti"
 import { scrollToSection } from "@/lib/utils"
 
 interface ProjectEstimatorProps {
@@ -98,15 +99,14 @@ const PRESET_PACKAGES = [
 
 const SERVICE_TYPES = [
   { id: "website", label: "Business Website", basePrice: 5000, baseWeeks: 1, icon: "🌐" },
-  { id: "mobile", label: "Mobile App (Android / iOS)", basePrice: 30000, baseWeeks: 3, icon: "📱" },
-  { id: "backend", label: "Backend, APIs & Cloud DB", basePrice: 25000, baseWeeks: 3, icon: "⚙️" },
-  { id: "ai", label: "AI Chatbot & Automation Agent", basePrice: 20000, baseWeeks: 2, icon: "🤖" },
-  { id: "fullstack", label: "Full-Stack Custom Platform", basePrice: 50000, baseWeeks: 4, icon: "🚀" },
+  { id: "mobile", label: "Mobile App (iOS & Android)", basePrice: 30000, baseWeeks: 3, icon: "📱" },
+  { id: "backend", label: "Backend API & Storage", basePrice: 25000, baseWeeks: 2, icon: "⚡" },
+  { id: "ai", label: "AI Automation Agent", basePrice: 20000, baseWeeks: 1, icon: "🤖" },
 ]
 
 const FEATURE_ADDONS = [
-  { id: "auth", label: "User Auth & Roles (JWT / OTP)", price: 5000, days: 3 },
-  { id: "admin", label: "Custom Admin Dashboard", price: 8000, days: 4 },
+  { id: "auth", label: "User Authentication (OAuth / JWT)", price: 8000, days: 3 },
+  { id: "admin", label: "Custom Admin Dashboard", price: 12000, days: 5 },
   { id: "booking", label: "Appointment / Booking Engine", price: 6000, days: 3 },
   { id: "whatsapp", label: "WhatsApp / Email Notifications", price: 3000, days: 2 },
   { id: "payments", label: "Online Payment Gateway Integration", price: 5000, days: 3 },
@@ -124,6 +124,7 @@ export const ProjectEstimator: React.FC<ProjectEstimatorProps> = ({ onApplyEstim
   const [selectedService, setSelectedService] = useState<string>("website")
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([])
   const [timelineUrgency, setTimelineUrgency] = useState<"standard" | "urgent">("standard")
+  const [showConfetti, setShowConfetti] = useState(false)
 
   const toggleFeature = (featureId: string) => {
     setSelectedFeatures((prev) =>
@@ -169,6 +170,7 @@ export const ProjectEstimator: React.FC<ProjectEstimatorProps> = ({ onApplyEstim
   }, [currentService, selectedFeatures, timelineUrgency])
 
   const handleApply = () => {
+    setShowConfetti(true)
     if (estimateMode === "packages") {
       let budgetBracket = "< ₹25,000"
       if (activePreset.price >= 100000) budgetBracket = "₹1,00,000+"
@@ -202,7 +204,9 @@ export const ProjectEstimator: React.FC<ProjectEstimatorProps> = ({ onApplyEstim
       }
     }
 
-    scrollToSection("contact")
+    setTimeout(() => {
+      scrollToSection("contact")
+    }, 400)
   }
 
   // Generate WhatsApp message for Estimator
@@ -239,7 +243,10 @@ Please let me know how we can discuss requirements and schedule a kickoff call!`
   }
 
   return (
-    <section id="estimator" className="py-24 bg-white border-t border-zinc-200/70 relative overflow-hidden">
+    <section id="estimator" className="py-16 sm:py-24 bg-white border-t border-zinc-200/70 relative overflow-hidden">
+      {/* Confetti celebration on applying estimate */}
+      <Confetti trigger={showConfetti} onComplete={() => setShowConfetti(false)} />
+
       <div className="container max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Header with Clean Typography */}

@@ -10,41 +10,41 @@ export interface ProcessStep {
 export const processSteps: ProcessStep[] = [
   {
     step: '01',
-    title: 'Discover',
-    tagline: 'Understanding Your Business & Strategy',
-    description: 'We begin with an in-depth conversation to understand your business model, target customers, current pain points, and specific project goals.',
+    title: 'Discovery & Goals',
+    tagline: 'Understanding Your Business & Audience',
+    description: 'We begin with an in-depth discovery session to understand your business model, customer psychology, competitive landscape, and specific revenue targets.',
     actionItems: [
-      'Analyze your target market, competitors, and client expectations',
-      'Identify core business requirements and necessary digital features',
-      'Clarify timeline expectations, budget scope, and technical preferences'
+      'Analyze your target audience, customer pain points, and commercial objectives',
+      'Identify essential digital features, integrations, and user conversion funnels',
+      'Establish clear milestones, transparent fixed pricing, and delivery timelines'
     ],
     deliverables: [
-      'Project Scope Summary',
+      'Project Scope & Strategy Summary',
       'Feature Prioritization Matrix',
-      'Clear Timeline & Milestone Roadmap'
+      'Clear Milestone & Delivery Roadmap'
     ]
   },
   {
     step: '02',
-    title: 'Plan',
-    tagline: 'Architecture & UX Wireframing',
-    description: 'We structure the product blueprint, database schemas, user journeys, API specifications, and interface layouts before writing a single line of code.',
+    title: 'Wireframe & Messaging',
+    tagline: 'Architecture, Copy & System Design',
+    description: 'We structure the narrative flow, conversion messaging, database schemas, API specs, and interactive wireframes before writing code.',
     actionItems: [
-      'Map intuitive user navigation paths and conversion funnels',
-      'Design clean relational database schemas and API contracts',
-      'Select the optimal technology stack for performance and long-term scalability'
+      'Craft high-impact copy and intuitive user journey paths',
+      'Design relational database schemas and secure API contracts',
+      'Prototype mobile-first responsive wireframes for early feedback'
     ],
     deliverables: [
       'Interactive UI Wireframes & Layout Prototypes',
-      'Database Entity-Relationship Schema',
-      'System Architecture Blueprint'
+      'Messaging & Copy Hierarchy Blueprint',
+      'System Architecture & Database Schema'
     ]
   },
   {
     step: '03',
     title: 'Design & Build',
-    tagline: 'Clean Code & High-Standard Engineering',
-    description: 'We craft modern, responsive interfaces and build robust backend services using clean, strictly-typed code with continuous review checkpoints.',
+    tagline: 'Clean Code & High-Performance Engineering',
+    description: 'We craft modern, polished interfaces and implement robust backend services and AI agents using clean, strictly-typed code with weekly sprint previews.',
     actionItems: [
       'Develop pixel-perfect responsive layouts for mobile, tablet, and desktop',
       'Implement secure authentication, REST APIs, and database integrations',
@@ -58,9 +58,9 @@ export const processSteps: ProcessStep[] = [
   },
   {
     step: '04',
-    title: 'Launch & Improve',
-    tagline: 'Deployment, Store Submission & Handover',
-    description: 'We execute a smooth production launch, configure domains, publish app store bundles, and provide post-launch optimization based on real user feedback.',
+    title: 'Review & Launch',
+    tagline: 'Testing, Deployment & Client Handover',
+    description: 'We execute thorough cross-device QA, configure domains and SSL, publish mobile app store bundles, and deliver 100% complete source code ownership.',
     actionItems: [
       'Deploy to high-speed cloud infrastructure (Vercel, AWS, Cloudflare, etc.)',
       'Prepare store listings and metadata for Google Play & Apple App Store',
@@ -69,7 +69,7 @@ export const processSteps: ProcessStep[] = [
     deliverables: [
       'Live Production System with SSL and Domain Setup',
       'Clean Codebase Handover & Documentation Guide',
-      'Post-Launch Support & Warranty Check-in'
+      'Post-Launch Support & Performance Check-in'
     ]
   }
 ]
