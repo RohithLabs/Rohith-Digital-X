@@ -1,5 +1,5 @@
 import React from "react"
-import { CheckCircle2, Star, Calendar, MessageSquare, ArrowRight, ShieldCheck, Zap, Bot, Database, ShoppingBag } from "lucide-react"
+import { Star, Bot } from "lucide-react"
 
 interface DeviceMockupProps {
   type: "laptop" | "phone" | "tablet"

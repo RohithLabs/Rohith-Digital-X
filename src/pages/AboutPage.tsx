@@ -4,7 +4,7 @@ import { AboutSection } from "@/components/sections/AboutSection"
 import { TrustSection } from "@/components/sections/TrustSection"
 import { ShimmerButton } from "@/components/ui/shimmer-button"
 import { useNavigation } from "@/context/NavigationContext"
-import { ArrowRight, Sparkles } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 export const AboutPage: React.FC = () => {
   const { navigate } = useNavigation()

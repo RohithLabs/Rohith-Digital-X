@@ -1,9 +1,9 @@
 import React, { useState, useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion } from "framer-motion"
 import { projectsData, ProjectItem } from "@/data/projects"
 import { ProjectDetailModal } from "@/components/modals/ProjectDetailModal"
 import { DeviceMockup } from "@/components/ui/device-mockup"
-import { ArrowUpRight, Sparkles, Activity, Layers, Laptop, Smartphone, Bot, Server } from "lucide-react"
+import { ArrowUpRight, Layers } from "lucide-react"
 
 interface WorkSectionProps {
   onDiscussSimilar?: (projectTitle: string) => void
@@ -100,9 +100,9 @@ const STACKED_PROJECTS: StackedCardItem[] = [
 const StackedCard: React.FC<{
   card: StackedCardItem
   index: number
-  total: number
+  total?: number
   onOpenModal: (project: ProjectItem) => void
-}> = ({ card, index, total, onOpenModal }) => {
+}> = ({ card, index, onOpenModal }) => {
   const cardRef = useRef<HTMLDivElement>(null)
 
   return (

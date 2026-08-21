@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, Send, Sparkles, Heart, MessageSquare, User, Calendar } from "lucide-react"
+import { X, Send, Heart } from "lucide-react"
 import { Confetti } from "@/components/ui/confetti"
 
 interface GuestMessage {

@@ -1,13 +1,12 @@
 import React from "react"
 import { motion } from "framer-motion"
-import { ArrowRight, Code, Smartphone, Server, Bot, Sparkles, ShieldCheck, Zap } from "lucide-react"
+import { ArrowRight, Code, Smartphone, Server, Bot, ShieldCheck } from "lucide-react"
 import { HeroCanvas } from "@/components/visual/HeroCanvas"
 import { Particles } from "@/components/ui/particles"
 import { BorderBeam } from "@/components/ui/border-beam"
 import { TiltCard } from "@/components/ui/tilt-card"
 import { ShimmerButton } from "@/components/ui/shimmer-button"
 import { FlipWords } from "@/components/ui/flip-words"
-import { SparklesText } from "@/components/ui/sparkles-text"
 import { scrollToSection } from "@/lib/utils"
 
 const KINETIC_PHRASES = [

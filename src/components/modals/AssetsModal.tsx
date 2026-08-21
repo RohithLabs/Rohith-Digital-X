@@ -1,6 +1,6 @@
 import React from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, Download, ExternalLink, Code2, Layers, Cpu, CheckCircle } from "lucide-react"
+import { X, ExternalLink, CheckCircle } from "lucide-react"
 
 interface AssetsModalProps {
   isOpen: boolean

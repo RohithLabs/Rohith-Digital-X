@@ -1,4 +1,3 @@
-import React from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Navbar } from "@/components/layout/Navbar"
 import { Footer } from "@/components/layout/Footer"

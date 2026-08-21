@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { techStackData } from "@/data/techStack"
-import { Button } from "@/components/ui/button"
 import { TiltCard } from "@/components/ui/tilt-card"
 import { MacDock } from "@/components/ui/mac-dock"
-import { MapPin, Mail, Phone, CheckCircle, ArrowRight, Sparkles, Code2, Layers, Cpu, Database, Smartphone, Globe } from "lucide-react"
-import { scrollToSection } from "@/lib/utils"
+import { Sparkles } from "lucide-react"
 
 const CLIENT_LOGOS = [
   { name: "INTERWOVE", font: "font-serif tracking-[0.25em]" },

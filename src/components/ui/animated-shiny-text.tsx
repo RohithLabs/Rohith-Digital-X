@@ -1,4 +1,4 @@
-import React, { type CSSProperties, type FC, type ReactNode } from "react"
+import { type CSSProperties, type FC, type ReactNode } from "react"
 import { cn } from "@/lib/utils"
 
 interface AnimatedShinyTextProps {

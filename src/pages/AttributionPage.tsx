@@ -1,6 +1,5 @@
 import React from "react"
 import { motion } from "framer-motion"
-import { Code2, Layers, Cpu, Palette, ArrowUpRight } from "lucide-react"
 
 const ATTRIBUTIONS = [
   {

@@ -1,10 +1,9 @@
 import React, { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight, ArrowUpRight } from "lucide-react"
 import { LegalModal } from "@/components/modals/LegalModal"
 import { GuestbookModal } from "@/components/modals/GuestbookModal"
 import { AssetsModal } from "@/components/modals/AssetsModal"
-import { useNavigation, PageRoute } from "@/context/NavigationContext"
+import { useNavigation } from "@/context/NavigationContext"
 
 interface CapsuleFooterItemProps {
   label: string

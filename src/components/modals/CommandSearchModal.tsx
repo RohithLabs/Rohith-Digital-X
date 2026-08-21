@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Search, X, ArrowRight, Sparkles, Code2, Smartphone, Cpu, ShieldCheck, HelpCircle, PhoneCall, Layers, BookOpen } from "lucide-react"
+import { Search, X, ArrowRight, Sparkles, Code2, Smartphone, Cpu, ShieldCheck, PhoneCall, Layers, BookOpen } from "lucide-react"
 import { useNavigation, PageRoute } from "@/context/NavigationContext"
 
 interface CommandSearchModalProps {
