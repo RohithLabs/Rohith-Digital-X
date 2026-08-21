@@ -3,6 +3,7 @@ import { Navbar } from "@/components/layout/Navbar"
 import { Footer } from "@/components/layout/Footer"
 import { ScrollToTop } from "@/components/layout/ScrollToTop"
 import { ScrollProgressBar } from "@/components/layout/ScrollProgressBar"
+import { ShadedBrandWatermark } from "@/components/ui/shaded-brand-watermark"
 import { useLenis } from "@/hooks/useLenis"
 import { NavigationProvider, useNavigation } from "@/context/NavigationContext"
 
@@ -66,6 +67,9 @@ function AppContent() {
           </motion.div>
         </AnimatePresence>
       </main>
+
+      {/* Monumental Editorial Shaded Brand Watermark (Exact Match to User Reference) */}
+      <ShadedBrandWatermark text="ROHITH DIGITAL X" />
 
       {/* Sleek Dark Executive Footer */}
       <Footer />
