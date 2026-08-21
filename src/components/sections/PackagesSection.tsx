@@ -203,7 +203,7 @@ Please let me know the kickoff process and timeline to get started!`
                           <Icon className="h-5 w-5" />
                         </div>
                         <span
-                          className={`text-xs font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-full transition-colors ${
+                          className={`text-xs font-pilcrow font-bold uppercase tracking-wider px-2.5 py-1 rounded-full transition-colors ${
                             isPopular
                               ? "bg-zinc-800 text-zinc-300"
                               : "bg-zinc-200/80 text-zinc-700 group-hover:bg-red-100 group-hover:text-accent-crimson"
@@ -216,14 +216,14 @@ Please let me know the kickoff process and timeline to get started!`
                       {/* Title & Tagline with standardized min-height for horizontal lockstep alignment */}
                       <div className="min-h-[66px] flex flex-col justify-start mb-2">
                         <h3
-                          className={`text-xl font-bold tracking-tight leading-snug transition-colors ${
+                          className={`text-xl font-bold tracking-tight leading-snug transition-colors font-bonny ${
                             isPopular ? "text-white" : "text-zinc-950 group-hover:text-accent-crimson"
                           }`}
                         >
                           {pkg.name}
                         </h3>
                         <p
-                          className={`text-xs font-semibold mt-1 ${
+                          className={`text-xs font-semibold mt-1 font-general ${
                             isPopular ? "text-red-400" : "text-accent-crimson"
                           }`}
                         >
@@ -234,14 +234,14 @@ Please let me know the kickoff process and timeline to get started!`
                       {/* Price Tag with standardized height */}
                       <div className="h-[60px] flex items-baseline gap-2 pb-4 mb-4 border-b border-zinc-200/60 dark:border-zinc-800">
                         <span
-                          className={`text-3xl sm:text-4xl font-extrabold tracking-tight transition-colors ${
+                          className={`text-3xl sm:text-4xl font-extrabold tracking-tight transition-colors font-trench ${
                             isPopular ? "text-white" : "text-zinc-950"
                           }`}
                         >
                           {pkg.price}
                         </span>
                         <span
-                          className={`text-xs font-medium ${
+                          className={`text-xs font-medium font-general ${
                             isPopular ? "text-zinc-400" : "text-zinc-500"
                           }`}
                         >

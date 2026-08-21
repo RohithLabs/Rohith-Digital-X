@@ -45,15 +45,15 @@ export const AboutSection: React.FC = () => {
             
             {/* Left Column: Headline & Story */}
             <div className="lg:col-span-6 space-y-4">
-              <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-[0.25em] text-zinc-400">
+              <span className="text-[10px] sm:text-xs font-pilcrow font-bold uppercase tracking-[0.25em] text-zinc-400">
                 A SUMMARY
               </span>
 
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950">
-                Know <span className="font-light text-zinc-400">me</span> as I am<span className="text-accent-crimson">.</span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950 font-display">
+                Know <span className="font-boska italic font-normal text-zinc-500">me</span> as I am<span className="text-accent-crimson">.</span>
               </h2>
 
-              <p className="text-sm sm:text-base text-zinc-700 leading-relaxed font-normal pt-1">
+              <p className="text-sm sm:text-base text-zinc-700 leading-relaxed font-normal pt-1 font-general">
                 <span className="text-accent-crimson font-bold">I design products that get out of the way.</span> 3+ years across unisphere, SaaS, and consumer apps — from the brief to the build. I care about clarity, calmness, and the boring details no one notices when they're done right.
               </p>
             </div>
@@ -63,34 +63,34 @@ export const AboutSection: React.FC = () => {
               
               {/* Row 1: BASED */}
               <div className="py-3.5 flex items-center justify-between gap-4">
-                <span className="font-mono text-[10px] sm:text-xs uppercase font-bold tracking-widest text-zinc-400">
+                <span className="font-pilcrow text-[10px] sm:text-xs uppercase font-bold tracking-widest text-zinc-400">
                   BASED
                 </span>
-                <div className="flex items-center gap-2 font-bold text-zinc-900 font-sans">
+                <div className="flex items-center gap-2 font-bold text-zinc-900 font-general">
                   <span>Tamil Nadu, IN</span>
                   <span className="text-accent-crimson font-black text-xs">✦</span>
-                  <span className="font-mono text-xs text-zinc-700">{localTime || "08:38 PM"}</span>
+                  <span className="font-pilcrow text-xs text-zinc-700">{localTime || "08:38 PM"}</span>
                 </div>
               </div>
 
               {/* Row 2: CURRENTLY */}
               <div className="py-3.5 flex items-center justify-between gap-4">
-                <span className="font-mono text-[10px] sm:text-xs uppercase font-bold tracking-widest text-zinc-400">
+                <span className="font-pilcrow text-[10px] sm:text-xs uppercase font-bold tracking-widest text-zinc-400">
                   CURRENTLY
                 </span>
-                <div className="flex items-center gap-2 font-bold text-zinc-900 font-sans">
+                <div className="flex items-center gap-2 font-bold text-zinc-900 font-general">
                   <span>Founder & App Developer</span>
                   <span className="text-accent-crimson font-black text-xs">✦</span>
-                  <span className="font-mono text-xs text-zinc-700">rdx.agency</span>
+                  <span className="font-pilcrow text-xs text-zinc-700">rdx.agency</span>
                 </div>
               </div>
 
               {/* Row 3: DOMAIN */}
               <div className="py-3.5 flex items-center justify-between gap-4">
-                <span className="font-mono text-[10px] sm:text-xs uppercase font-bold tracking-widest text-zinc-400">
+                <span className="font-pilcrow text-[10px] sm:text-xs uppercase font-bold tracking-widest text-zinc-400">
                   DOMAIN
                 </span>
-                <div className="font-semibold text-zinc-800 text-right">
+                <div className="font-semibold text-zinc-800 text-right font-general">
                   <span>Mobile Apps • Web • AI & DS</span>
                 </div>
               </div>
@@ -144,23 +144,23 @@ export const AboutSection: React.FC = () => {
                   
                   {/* Frame Header */}
                   <div className="space-y-2 text-center">
-                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-700 flex items-center justify-center gap-1.5">
+                    <span className="text-xs font-trench font-bold uppercase tracking-wider text-zinc-700 flex items-center justify-center gap-1.5">
                       <span className="text-accent-crimson font-black">✦</span>
                       <span>FRAME 1</span>
                     </span>
-                    <h4 className="text-lg font-bold text-zinc-950">Backend & Architecture</h4>
+                    <h4 className="text-xl font-bold text-zinc-950 font-bonny">Backend & Architecture</h4>
                   </div>
 
                   {/* Frame Visual Preview */}
                   <div className="my-auto p-4 rounded-2xl bg-white border border-zinc-200/80 shadow-2xs space-y-2 text-left">
-                    <div className="flex items-center justify-between text-[10px] font-mono text-zinc-400">
+                    <div className="flex items-center justify-between text-[10px] font-pilcrow text-zinc-400">
                       <span>ENGINEERING DISCIPLINE</span>
                       <span className="text-emerald-600 font-bold">STABLE</span>
                     </div>
-                    <p className="text-xs font-semibold text-zinc-800 leading-snug">
+                    <p className="text-xs font-medium text-zinc-800 leading-snug font-general">
                       Java Spring Boot, relational PostgreSQL, database indexing, and strict token authorization.
                     </p>
-                    <div className="flex gap-1.5 pt-1 text-[10px] font-mono text-zinc-500">
+                    <div className="flex gap-1.5 pt-1 text-[10px] font-pilcrow text-zinc-500">
                       <span className="px-2 py-0.5 rounded bg-zinc-100">Java 21</span>
                       <span className="px-2 py-0.5 rounded bg-zinc-100">SQL</span>
                       <span className="px-2 py-0.5 rounded bg-zinc-100">JWT</span>
@@ -168,7 +168,7 @@ export const AboutSection: React.FC = () => {
                   </div>
 
                   {/* Frame Bottom Note */}
-                  <p className="text-[11px] font-mono uppercase tracking-widest text-zinc-400 text-center">
+                  <p className="text-[11px] font-pilcrow uppercase tracking-widest text-zinc-400 text-center">
                     Resilient Data Models
                   </p>
 
@@ -188,23 +188,23 @@ export const AboutSection: React.FC = () => {
                   
                   {/* Frame Header */}
                   <div className="space-y-2 text-center">
-                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-700 flex items-center justify-center gap-1.5">
+                    <span className="text-xs font-trench font-bold uppercase tracking-wider text-zinc-700 flex items-center justify-center gap-1.5">
                       <span className="text-accent-crimson font-black">✦</span>
                       <span>FRAME 2</span>
                     </span>
-                    <h4 className="text-lg font-bold text-zinc-950">UI/UX & Mobile Apps</h4>
+                    <h4 className="text-xl font-bold text-zinc-950 font-bonny">UI/UX & Mobile Apps</h4>
                   </div>
 
                   {/* Frame Visual Preview */}
                   <div className="my-auto p-4 rounded-2xl bg-white border border-zinc-200/80 shadow-2xs space-y-2 text-left">
-                    <div className="flex items-center justify-between text-[10px] font-mono text-zinc-400">
+                    <div className="flex items-center justify-between text-[10px] font-pilcrow text-zinc-400">
                       <span>CONVERSION PSYCHOLOGY</span>
                       <span className="text-accent-crimson font-bold">FLUID</span>
                     </div>
-                    <p className="text-xs font-semibold text-zinc-800 leading-snug">
+                    <p className="text-xs font-medium text-zinc-800 leading-snug font-general">
                       React 19, TypeScript, React Native, micro-animations, and sub-second responsive viewport scaling.
                     </p>
-                    <div className="flex gap-1.5 pt-1 text-[10px] font-mono text-zinc-500">
+                    <div className="flex gap-1.5 pt-1 text-[10px] font-pilcrow text-zinc-500">
                       <span className="px-2 py-0.5 rounded bg-zinc-100">React 19</span>
                       <span className="px-2 py-0.5 rounded bg-zinc-100">iOS/Android</span>
                       <span className="px-2 py-0.5 rounded bg-zinc-100">Tailwind</span>
@@ -212,7 +212,7 @@ export const AboutSection: React.FC = () => {
                   </div>
 
                   {/* Frame Bottom Note */}
-                  <p className="text-[11px] font-mono uppercase tracking-widest text-zinc-400 text-center">
+                  <p className="text-[11px] font-pilcrow uppercase tracking-widest text-zinc-400 text-center">
                     High-Converting Products
                   </p>
 
@@ -232,20 +232,20 @@ export const AboutSection: React.FC = () => {
                   
                   {/* Frame Header */}
                   <div className="space-y-2 text-center">
-                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-700 flex items-center justify-center gap-1.5">
+                    <span className="text-xs font-trench font-bold uppercase tracking-wider text-zinc-700 flex items-center justify-center gap-1.5">
                       <span className="text-accent-crimson font-black">✦</span>
                       <span>FRAME 3</span>
                     </span>
-                    <h4 className="text-lg font-bold text-zinc-950">AI & Autonomous Agents</h4>
+                    <h4 className="text-xl font-bold text-zinc-950 font-bonny">AI & Autonomous Agents</h4>
                   </div>
 
                   {/* Frame Visual Preview */}
                   <div className="my-auto p-4 rounded-2xl bg-white border border-zinc-200/80 shadow-2xs space-y-2 text-left">
-                    <div className="flex items-center justify-between text-[10px] font-mono text-zinc-400">
+                    <div className="flex items-center justify-between text-[10px] font-pilcrow text-zinc-400">
                       <span>INTELLIGENT PIPELINES</span>
                       <span className="text-purple-600 font-bold">SMART</span>
                     </div>
-                    <p className="text-xs font-semibold text-zinc-800 leading-snug">
+                    <p className="text-xs font-medium text-zinc-800 leading-snug font-general">
                       Trained RAG knowledge bases, 24/7 WhatsApp customer bots, and webhook CRM synchronization.
                     </p>
                     <div className="flex gap-1.5 pt-1 text-[10px] font-mono text-zinc-500">
@@ -321,30 +321,30 @@ export const AboutSection: React.FC = () => {
               
               {/* Stat 1 */}
               <div className="space-y-1">
-                <div className="text-3xl sm:text-4xl md:text-5xl font-black text-accent-crimson tracking-tight font-mono">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-black text-accent-crimson tracking-tight font-trench">
                   03
                 </div>
-                <p className="text-[9px] sm:text-[10px] uppercase font-mono font-bold text-zinc-400 leading-tight">
+                <p className="text-[9px] sm:text-[10px] uppercase font-pilcrow font-bold text-zinc-400 leading-tight">
                   Years In<br />Full-Stack
                 </p>
               </div>
 
               {/* Stat 2 */}
               <div className="space-y-1">
-                <div className="text-3xl sm:text-4xl md:text-5xl font-black text-accent-crimson tracking-tight font-mono">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-black text-accent-crimson tracking-tight font-trench">
                   15+
                 </div>
-                <p className="text-[9px] sm:text-[10px] uppercase font-mono font-bold text-zinc-400 leading-tight">
+                <p className="text-[9px] sm:text-[10px] uppercase font-pilcrow font-bold text-zinc-400 leading-tight">
                   Projects<br />Delivered
                 </p>
               </div>
 
               {/* Stat 3 */}
               <div className="space-y-1">
-                <div className="text-3xl sm:text-4xl md:text-5xl font-black text-accent-crimson tracking-tight font-mono">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-black text-accent-crimson tracking-tight font-trench">
                   100%
                 </div>
-                <p className="text-[9px] sm:text-[10px] uppercase font-mono font-bold text-zinc-400 leading-tight">
+                <p className="text-[9px] sm:text-[10px] uppercase font-pilcrow font-bold text-zinc-400 leading-tight">
                   Code & IP<br />Ownership
                 </p>
               </div>
@@ -378,10 +378,10 @@ export const AboutSection: React.FC = () => {
                 <TiltCard tiltMaxAngleX={4} tiltMaxAngleY={4} scale={1.015} className="h-full">
                   <div className="p-5 rounded-2xl bg-zinc-50 border border-zinc-200/90 shadow-2xs hover:border-accent-crimson hover:bg-white hover:shadow-card transition-all duration-300 space-y-3 h-full cursor-default flex flex-col justify-between">
                     <div>
-                      <h4 className="text-xs font-bold text-zinc-900 group-hover:text-accent-crimson transition-colors uppercase tracking-wider font-mono">
+                      <h4 className="text-sm font-bold text-zinc-900 group-hover:text-accent-crimson transition-colors uppercase tracking-wider font-bonny">
                         {category.title}
                       </h4>
-                      <p className="text-xs text-zinc-600 leading-relaxed mt-1.5 font-normal">
+                      <p className="text-xs text-zinc-600 leading-relaxed mt-1.5 font-hind">
                         {category.description}
                       </p>
                     </div>
@@ -390,7 +390,7 @@ export const AboutSection: React.FC = () => {
                       {category.skills.map((tech) => (
                         <span
                           key={tech.name}
-                          className="px-2 py-0.5 rounded-md bg-white border border-zinc-200 text-[10px] font-mono font-medium text-zinc-800 hover:border-accent-crimson hover:text-accent-crimson transition-colors cursor-default"
+                          className="px-2 py-0.5 rounded-md bg-white border border-zinc-200 text-[10px] font-pilcrow font-medium text-zinc-800 hover:border-accent-crimson hover:text-accent-crimson transition-colors cursor-default"
                         >
                           {tech.name}
                         </span>

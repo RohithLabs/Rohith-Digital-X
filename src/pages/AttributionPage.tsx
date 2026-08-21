@@ -3,13 +3,20 @@ import { motion } from "framer-motion"
 
 const ATTRIBUTIONS = [
   {
-    title: "Typography & Typefaces",
-    description: "Google Fonts & Fontshare editorial typography systems.",
+    title: "Fontshare Typography Suite (11 Typefaces)",
+    description: "Curated Indian Type Foundry & Fontshare editorial typography systems.",
     items: [
-      { name: "Outfit", purpose: "Primary Display Headings (500, 600, 700, 800)" },
-      { name: "Inter", purpose: "Primary Body Text & Interface (400, 500, 600, 700)" },
-      { name: "Cabinet Grotesk", purpose: "Editorial Secondary Display" },
-      { name: "JetBrains Mono", purpose: "Code Blocks, Overlines & Technical Tags" },
+      { name: "General Sans", purpose: "Primary Interface Body, Controls & Fluid Reading" },
+      { name: "Boska", purpose: "Luxury Editorial Serif & Refined Heading Accents" },
+      { name: "Bonny", purpose: "Contemporary Display Serif for Methodology & Frame Titles" },
+      { name: "Melodrama", purpose: "Artistic Expressive Serif for Showcase Moments" },
+      { name: "Trench Slab", purpose: "Heavy Architectural Slab for Stats, Numbers & Pricing" },
+      { name: "Khand", purpose: "High-Impact Condensed Display for Monumental Watermarks" },
+      { name: "Pilcrow Rounded", purpose: "Technical Metadata, System Badges & Code Tags" },
+      { name: "Britney", purpose: "Creative Experimental Display for Taglines & Accents" },
+      { name: "Hind", purpose: "Balanced Humanist Sans for Long-Form Narrative Copy" },
+      { name: "Quicksand", purpose: "Friendly Geometric Rounded for Interactive Elements & Signatures" },
+      { name: "Nunito", purpose: "Soft Rounded Secondary Reading & Tooltips" },
     ],
   },
   {

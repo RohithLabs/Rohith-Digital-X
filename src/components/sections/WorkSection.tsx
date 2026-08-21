@@ -117,7 +117,7 @@ const StackedCard: React.FC<{
         className={`relative rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 lg:p-12 border ${card.borderColor} ${card.bgColor} shadow-2xl transition-all duration-300 overflow-hidden`}
       >
         {/* Subtle decorative watermark */}
-        <div className="absolute top-4 right-8 font-mono text-[90px] sm:text-[140px] font-black text-black/[0.02] select-none pointer-events-none leading-none">
+        <div className="absolute top-4 right-8 font-trench text-[90px] sm:text-[140px] font-black text-black/[0.03] select-none pointer-events-none leading-none">
           0{index + 1}
         </div>
 
@@ -127,7 +127,7 @@ const StackedCard: React.FC<{
           <div className="lg:col-span-6 space-y-4 sm:space-y-6">
             
             {/* Tagline / Categories with Diamond Separators */}
-            <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-zinc-600">
+            <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap text-[10px] sm:text-xs font-pilcrow font-bold uppercase tracking-wider text-zinc-600">
               {card.tags.map((tag, tIdx) => (
                 <React.Fragment key={tIdx}>
                   <span className="hover:text-zinc-950 transition-colors">{tag}</span>
@@ -140,17 +140,17 @@ const StackedCard: React.FC<{
 
             {/* Brand Title with Crimson Period */}
             <div>
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-zinc-950 leading-tight">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-zinc-950 leading-tight font-display">
                 {card.brandName}
                 <span className="text-accent-crimson">.</span>
               </h3>
-              <p className="text-xs sm:text-sm font-bold text-zinc-700 mt-1">
+              <p className="text-sm sm:text-base font-bold text-zinc-800 mt-1 font-bonny">
                 {card.title}
               </p>
             </div>
 
             {/* Description Body */}
-            <p className="text-xs sm:text-sm md:text-base text-zinc-700 leading-relaxed font-normal">
+            <p className="text-xs sm:text-sm md:text-base text-zinc-700 leading-relaxed font-normal font-general">
               {card.description}
             </p>
 
@@ -159,7 +159,7 @@ const StackedCard: React.FC<{
               {card.fullProject.technologies.map((tech, techIdx) => (
                 <span
                   key={techIdx}
-                  className="px-2.5 py-1 rounded-full bg-white/90 border border-zinc-200/90 text-[10px] sm:text-[11px] font-mono text-zinc-800 font-semibold shadow-2xs"
+                  className="px-2.5 py-1 rounded-full bg-white/90 border border-zinc-200/90 text-[10px] sm:text-[11px] font-pilcrow text-zinc-800 font-semibold shadow-2xs"
                 >
                   {tech}
                 </span>
@@ -234,7 +234,7 @@ export const WorkSection: React.FC<WorkSectionProps> = ({ onDiscussSimilar }) =>
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-widest text-zinc-600"
+            className="inline-flex items-center gap-1.5 text-xs font-pilcrow font-bold uppercase tracking-widest text-zinc-600"
           >
             <span className="text-accent-crimson font-black text-sm">✦</span>
             <span>WORKS</span>
@@ -248,7 +248,7 @@ export const WorkSection: React.FC<WorkSectionProps> = ({ onDiscussSimilar }) =>
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-[-0.04em] text-zinc-950 lowercase max-w-4xl mx-auto leading-tight font-display"
           >
-            crafting the finest of all<span className="text-accent-crimson">.</span>
+            crafting <span className="font-boska italic font-normal text-zinc-500">the finest</span> of all<span className="text-accent-crimson">.</span>
           </motion.h2>
         </div>
 
@@ -263,7 +263,7 @@ export const WorkSection: React.FC<WorkSectionProps> = ({ onDiscussSimilar }) =>
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-bold font-mono transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap ${
+                  className={`px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-bold font-pilcrow transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap ${
                     isActive
                       ? "bg-zinc-950 text-white shadow-xs"
                       : "text-zinc-600 hover:text-zinc-950 hover:bg-zinc-200/60"
@@ -280,7 +280,7 @@ export const WorkSection: React.FC<WorkSectionProps> = ({ onDiscussSimilar }) =>
 
           {/* Right: Shown Count & View Switcher */}
           <div className="flex items-center gap-3 self-end sm:self-center">
-            <span className="text-xs font-mono font-bold text-zinc-500">
+            <span className="text-xs font-pilcrow font-bold text-zinc-500">
               {filteredProjects.length} shown
             </span>
 

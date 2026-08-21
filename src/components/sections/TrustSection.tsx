@@ -58,7 +58,7 @@ export const TrustSection: React.FC = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-accent-crimson font-mono inline-flex items-center gap-1.5"
+            className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-accent-crimson font-pilcrow inline-flex items-center gap-1.5"
           >
             <Sparkles className="h-3 w-3" />
             <span>FOUNDATIONAL ENGINEERING PRINCIPLES</span>
@@ -71,14 +71,14 @@ export const TrustSection: React.FC = () => {
             className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-zinc-950 leading-tight font-display"
           >
             Turning ambitious ideas into{" "}
-            <span className="text-accent-crimson font-black">reliable digital products.</span>
+            <span className="font-boska italic font-normal text-accent-crimson">reliable digital products.</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-sm sm:text-base text-zinc-600 leading-relaxed font-normal max-w-2xl mx-auto"
+            className="text-sm sm:text-base text-zinc-600 leading-relaxed font-normal max-w-2xl mx-auto font-general"
           >
             We build with speed, scalability, and clean modular code for founders and growing businesses.
           </motion.p>
@@ -104,19 +104,19 @@ export const TrustSection: React.FC = () => {
                         <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-white border border-zinc-200 text-zinc-900 group-hover:text-accent-crimson group-hover:border-red-200 group-hover:bg-red-50/60 group-hover:scale-110 transition-all duration-300 shadow-xs">
                           <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                         </div>
-                        <span className="text-xs font-mono font-extrabold text-zinc-400 group-hover:text-accent-crimson transition-colors">
+                        <span className="text-xs font-trench font-extrabold text-zinc-400 group-hover:text-accent-crimson transition-colors">
                           0{index + 1}
                         </span>
                       </div>
-                      <h3 className="text-sm sm:text-base font-bold text-zinc-900 group-hover:text-accent-crimson transition-colors mb-1.5">
+                      <h3 className="text-base sm:text-lg font-bold text-zinc-900 group-hover:text-accent-crimson transition-colors mb-1.5 font-bonny">
                         {pillar.title}
                       </h3>
-                      <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed font-normal">
+                      <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed font-normal font-general">
                         {pillar.description}
                       </p>
                     </div>
 
-                    <div className="mt-4 pt-3 border-t border-zinc-200/60 flex items-center gap-1.5 text-[10px] sm:text-[11px] font-semibold text-zinc-500">
+                    <div className="mt-4 pt-3 border-t border-zinc-200/60 flex items-center gap-1.5 text-[10px] sm:text-[11px] font-semibold text-zinc-500 font-pilcrow">
                       <CheckCircle2 className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-accent-crimson shrink-0" />
                       <span>Standard Quality SLA</span>
                     </div>

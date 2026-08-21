@@ -24,9 +24,9 @@ export const ShadedBrandWatermark: React.FC<ShadedBrandWatermarkProps> = ({
     >
       {/* Top subtle decorative subline */}
       {subtext && (
-        <div className="pt-8 sm:pt-12 pb-2 sm:pb-4 flex items-center gap-2 sm:gap-3 opacity-60">
+        <div className="pt-8 sm:pt-12 pb-2 sm:pb-4 flex items-center gap-2 sm:gap-3 opacity-70">
           <span className="h-px w-6 sm:w-12 bg-zinc-300 dark:bg-zinc-800" />
-          <span className="text-[9px] sm:text-[11px] font-mono font-bold tracking-[0.25em] sm:tracking-[0.3em] uppercase text-zinc-500">
+          <span className="text-[10px] sm:text-xs font-pilcrow font-bold tracking-[0.25em] sm:tracking-[0.3em] uppercase text-zinc-500">
             {subtext}
           </span>
           <span className="h-px w-6 sm:w-12 bg-zinc-300 dark:bg-zinc-800" />
@@ -40,13 +40,13 @@ export const ShadedBrandWatermark: React.FC<ShadedBrandWatermarkProps> = ({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className={`font-display font-black tracking-[-0.05em] uppercase text-center whitespace-nowrap leading-[0.76] block ${
+          className={`font-khand font-black tracking-tight uppercase text-center whitespace-nowrap leading-[0.74] block ${
             isLight
               ? "bg-gradient-to-b from-zinc-400 via-zinc-300/40 to-transparent bg-clip-text text-transparent"
-              : "bg-gradient-to-b from-zinc-700 via-zinc-800/30 to-transparent bg-clip-text text-transparent"
+              : "bg-gradient-to-b from-zinc-600 via-zinc-800/30 to-transparent bg-clip-text text-transparent"
           }`}
           style={{
-            fontSize: "clamp(3.5rem, 16vw, 15rem)",
+            fontSize: "clamp(4.5rem, 18vw, 17rem)",
             WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 45%, rgba(0,0,0,0) 92%)",
             maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 45%, rgba(0,0,0,0) 92%)",
           }}

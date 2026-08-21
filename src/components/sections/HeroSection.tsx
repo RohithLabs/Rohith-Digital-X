@@ -49,7 +49,7 @@ export const HeroSection: React.FC = () => {
               <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.04-7.58-7.77-11.64-14.19-5.74-8.87-10.22-19.16-13.43-30.86-3.21-11.7-4.82-22.95-4.82-33.74 0-14.28 3.57-26.04 10.7-35.29 7.14-9.25 16.32-13.97 27.53-14.15 4.97 0 10.45 1.25 16.44 3.75 5.99 2.5 9.87 3.8 11.64 3.9 1.54 0 5.67-1.42 12.39-4.26 6.72-2.84 12.28-4.08 16.69-3.73 12.7.99 22.58 5.76 29.64 14.31-11.39 6.89-16.96 16.27-16.71 28.14.25 9.53 3.99 17.51 11.22 23.94 4.5 4.02 9.63 6.94 15.4 8.76-.87 2.61-1.84 5.3-2.91 8.08zM119.22 31.84c0-7.39 2.69-14.33 8.07-20.81 5.38-6.49 12.07-10.48 20.07-11.98.37 1.58.55 3.03.55 4.36 0 7.35-2.82 14.49-8.46 21.42-5.64 6.93-12.44 10.87-20.4 11.83-.06-1.57.17-3.18.17-4.82z" />
             </svg>
 
-            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-zinc-200 font-mono">
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-zinc-200 font-pilcrow">
               DIGITAL PRODUCTS FOR AMBITIOUS BUSINESSES
             </span>
           </motion.div>
@@ -61,9 +61,9 @@ export const HeroSection: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
             className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-[-0.04em] text-zinc-950 leading-[1.12] sm:leading-[1.06] max-w-4xl mx-auto text-center font-display"
           >
-            <span>Build faster. Sell smarter.</span>
+            <span>Build faster. <span className="font-boska italic font-normal text-zinc-800">Sell smarter.</span></span>
             <div className="flex items-center justify-center flex-wrap gap-x-2.5 mt-1 sm:mt-1.5 mx-auto text-center">
-              <span className="text-zinc-900">Grow with</span>
+              <span className="text-zinc-900 font-display font-black">Grow with</span>
               <FlipWords words={KINETIC_PHRASES} duration={3000} className="text-accent-crimson inline-flex justify-center text-center font-black" />
             </div>
           </motion.h1>
@@ -148,37 +148,37 @@ export const HeroSection: React.FC = () => {
                   <div className="p-2.5 sm:p-3 rounded-xl bg-zinc-50 border border-zinc-100 hover:border-accent-crimson hover:bg-red-50/40 hover:shadow-xs transition-all duration-200 group/pillar">
                     <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-bold text-zinc-900 group-hover/pillar:text-accent-crimson transition-colors mb-0.5 sm:mb-1">
                       <Code className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-accent-crimson shrink-0" />
-                      <span>Websites</span>
+                      <span className="font-general font-bold">Websites</span>
                     </div>
-                    <p className="text-[10px] sm:text-[11px] text-zinc-500">Fast React / SEO</p>
-                    <div className="mt-1.5 sm:mt-2 text-[9px] sm:text-[10px] font-mono text-zinc-700 font-bold">From ₹5,000</div>
+                    <p className="text-[10px] sm:text-[11px] text-zinc-500 font-general">Fast React / SEO</p>
+                    <div className="mt-1.5 sm:mt-2 text-[10px] sm:text-xs font-trench text-zinc-800 font-bold">From ₹5,000</div>
                   </div>
 
                   <div className="p-2.5 sm:p-3 rounded-xl bg-zinc-50 border border-zinc-100 hover:border-accent-crimson hover:bg-red-50/40 hover:shadow-xs transition-all duration-200 group/pillar">
                     <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-bold text-zinc-900 group-hover/pillar:text-accent-crimson transition-colors mb-0.5 sm:mb-1">
                       <Smartphone className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-accent-crimson shrink-0" />
-                      <span>Mobile Apps</span>
+                      <span className="font-general font-bold">Mobile Apps</span>
                     </div>
-                    <p className="text-[10px] sm:text-[11px] text-zinc-500">Android & iOS</p>
-                    <div className="mt-1.5 sm:mt-2 text-[9px] sm:text-[10px] font-mono text-zinc-700 font-bold">From ₹30,000</div>
+                    <p className="text-[10px] sm:text-[11px] text-zinc-500 font-general">Android & iOS</p>
+                    <div className="mt-1.5 sm:mt-2 text-[10px] sm:text-xs font-trench text-zinc-800 font-bold">From ₹30,000</div>
                   </div>
 
                   <div className="p-2.5 sm:p-3 rounded-xl bg-zinc-50 border border-zinc-100 hover:border-accent-crimson hover:bg-red-50/40 hover:shadow-xs transition-all duration-200 group/pillar">
                     <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-bold text-zinc-900 group-hover/pillar:text-accent-crimson transition-colors mb-0.5 sm:mb-1">
                       <Server className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-accent-crimson shrink-0" />
-                      <span>Backends</span>
+                      <span className="font-general font-bold">Backends</span>
                     </div>
-                    <p className="text-[10px] sm:text-[11px] text-zinc-500">Spring Boot / SQL</p>
-                    <div className="mt-1.5 sm:mt-2 text-[9px] sm:text-[10px] font-mono text-zinc-700 font-bold">Secure REST API</div>
+                    <p className="text-[10px] sm:text-[11px] text-zinc-500 font-general">Spring Boot / SQL</p>
+                    <div className="mt-1.5 sm:mt-2 text-[10px] sm:text-xs font-trench text-zinc-800 font-bold">Secure REST API</div>
                   </div>
 
                   <div className="p-2.5 sm:p-3 rounded-xl bg-zinc-50 border border-zinc-100 hover:border-accent-crimson hover:bg-red-50/40 hover:shadow-xs transition-all duration-200 group/pillar">
                     <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-bold text-zinc-900 group-hover/pillar:text-accent-crimson transition-colors mb-0.5 sm:mb-1">
                       <Bot className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-accent-crimson shrink-0" />
-                      <span>AI Agents</span>
+                      <span className="font-general font-bold">AI Agents</span>
                     </div>
-                    <p className="text-[10px] sm:text-[11px] text-zinc-500">Workflows & Bots</p>
-                    <div className="mt-1.5 sm:mt-2 text-[9px] sm:text-[10px] font-mono text-zinc-700 font-bold">From ₹20,000</div>
+                    <p className="text-[10px] sm:text-[11px] text-zinc-500 font-general">Workflows & Bots</p>
+                    <div className="mt-1.5 sm:mt-2 text-[10px] sm:text-xs font-trench text-zinc-800 font-bold">From ₹20,000</div>
                   </div>
                 </div>
               </motion.div>
